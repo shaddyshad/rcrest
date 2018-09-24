@@ -5,7 +5,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Banner from './components/Banner';
 import Values from './components/Values';
-import ProcessList from './components/ProcessList'
+import ProcessList from './components/ProcessList';
+import CTA from './components/CallToAction';
 
 class App extends Component {
   render() {
@@ -15,9 +16,11 @@ class App extends Component {
           <Banner/>
           <Values/>
           <ProcessList/>
+          <CTA/>
       </div>
     );
   }
 }
+
 
 export default App;
