@@ -46,7 +46,7 @@ class ProcessList extends Component{
 
     render(){
         return (
-            <div>
+            <div style={styles.outline}>
                 <h3>How Do I Get My Paper Done at Research Paper Crest?</h3>
                 <HelpBlock>We have the privilege of dealing with the most professional writers ever.</HelpBlock>
                 <Grid>
@@ -56,6 +56,12 @@ class ProcessList extends Component{
                 </Grid>
             </div>
         );
+    }
+}
+
+const styles = {
+    outline: {
+        border: '1px solid black'
     }
 }
 
