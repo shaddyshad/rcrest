@@ -7,7 +7,7 @@ import {
 
 const Navigation = (props) => {
     return (
-        <Navbar>
+        <Navbar staticTop>
             <Navbar.Header>
                 <Navbar.Brand>
                     <span>Research crest</span>
