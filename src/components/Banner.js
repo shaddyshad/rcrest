@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Col, Grid, Row} from 'react-bootstrap';
 //components
 import LoginForm from './LoginForm';
-import BannerText from './BannerText'
+import BannerText from './BannerText';
+import PriceCalculator from './PriceCalculator'
 
 
 class Banner extends Component{
@@ -52,7 +53,7 @@ class Banner extends Component{
                     </Col>
                     {/*Login/ register form*/}
                     <Col xsHidden md={4}>
-                        <LoginForm/>
+                        <PriceCalculator/>
                     </Col>
                 </Row>
             </Grid>
