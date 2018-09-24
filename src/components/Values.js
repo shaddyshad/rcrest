@@ -31,7 +31,7 @@ class Values extends Component{
 
     render(){
         return (
-            <div>
+            <div style={styles.outline}>
                 <h3>Why choose us</h3>
                 <Grid>
                     <Row className="show-grid">
@@ -40,6 +40,12 @@ class Values extends Component{
                 </Grid>
             </div>
         );
+    }
+}
+
+const styles = {
+    outline: {
+        border: '1px solid black'
     }
 }
 
