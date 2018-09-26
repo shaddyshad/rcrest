@@ -19,7 +19,7 @@ class Form1 extends Component {
                 <FormGroup controlId="formControlsTextarea">
                     <ControlLabel>Want a specific writer? </ControlLabel>
                     <FormControl
-                        componentClass="text"
+                        type="text"
                         placeholder="WRITER ID"
                         value={writer_id}
                         onChange={onIdChange}
@@ -38,7 +38,7 @@ class Form1 extends Component {
                 <FormGroup controlId="formControlsTextarea">
                     <ControlLabel>Discount Code </ControlLabel>
                     <FormControl
-                        componentClass="text"
+                        type="text"
                         placeholder="DISCOUNT CODE"
                         value={discount_code}
                         onChange={onCodeChange}

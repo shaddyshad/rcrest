@@ -22,6 +22,8 @@ class Form1 extends Component{
 
     render(){
         const {instructions, onFieldChange, onSubmit} = this.props;
+
+        const isInvalid = instructions === '';
         return (
             <Form>
                 <FormGroup controlId="basic-paper">

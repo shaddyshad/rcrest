@@ -17,6 +17,7 @@ class Form1 extends Component{
     constructor(props){
         super(props);
         this.state = {
+            defaultValue: "Visual Arts and Film Studies",
             paperOptions: [
                 {category: 'Arts &amp; Human Studies', items: [
                     "Visual Arts and Film Studies",
@@ -108,13 +109,15 @@ class Form1 extends Component{
 
     render(){
         const {topic, sources, onTypeChange, onSourcesChange, onFormatChange, onTopicsChange} = this.props;
+
+        const isInvalid = topic === '' || sources === '';
         return (
             <Form>
                 <FormGroup controlId="basic-paper">
                     <ControlLabel>Paper Subject</ControlLabel>
                     <FormControl
                         componentClass="select"
-                        defaultValue="History"
+                        defaultValue={this.state.defaultValue}
                         onChange={onTypeChange}
                     >
                         {this.renderTypes()}
@@ -146,7 +149,9 @@ class Form1 extends Component{
                 <FormGroup onChange={onFormatChange}>
                     <Radio name="radioGroup"
                            value="MLA"
-                           inline>
+                           inline
+                            checked
+                    >
                         MLA
                     </Radio>{' '}
                     <Radio name="radioGroup"
@@ -171,7 +176,7 @@ class Form1 extends Component{
                     </Radio>
                 </FormGroup>
 
-                <Link to='/orders/1'><Button>Next</Button></Link>
+                <Link to='/orders/1'><Button disabled={isInvalid}>Next</Button></Link>
 
             </Form>
         );

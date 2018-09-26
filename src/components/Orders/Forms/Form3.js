@@ -6,7 +6,7 @@ import {
     FormControl,
     ControlLabel,
     Button,
-    HelpBlock, Radio
+    HelpBlock, Checkbox, Radio
 } from 'react-bootstrap';
 
 import {Link} from 'react-router-dom';
@@ -51,29 +51,22 @@ class Form1 extends Component {
 
     render() {
         const {pages, onPageChange, onSubmit, onLevelChange, onSpacingChange,onDeadlineChange, onTypeChange, amount} = this.props;
+
         return (
             <Form>
 
                 <FormGroup onChange={onLevelChange}>
                     <ControlLabel>Academic Level</ControlLabel>
-                    <Radio name="radioGroup" value="HIGH_SCHOOl" inline>
-                        High School
-                    </Radio>{' '}
-                    <Radio name="radioGroup" value="UNDERGRADUATE" inline>
-                        Undergraduate
-                    </Radio>{' '}
-                    <Radio name="radioGroup" value="MASTERS" inline>
-                        Masters
-                    </Radio>
-                    <Radio name="radioGroup" value="DOCTORAL" inline>
-                        Doctoral
-                    </Radio>
+                    <Checkbox inline value="HIGH_SCHOOL">High School</Checkbox>
+                    <Checkbox inline value="UNDERGRADUATE">Undergraduate</Checkbox>{' '}
+                    <Checkbox inline value="MASTERS">Master</Checkbox>
+                    <Checkbox inline value="DOCTORAL">Doctoral</Checkbox>
                 </FormGroup>
 
                 <FormGroup controlId="formControlsTextarea">
                     <ControlLabel>Pages</ControlLabel>
                     <FormControl
-                        componentClass="text"
+                        type="text"
                         value={pages}
                         onChange={onPageChange}
                     />

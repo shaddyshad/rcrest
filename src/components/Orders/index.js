@@ -21,12 +21,12 @@ class Orders extends Component{
     constructor(props){
         super(props);
         this.state = {
-            type: '',
-            sources: '',
+            type: 'Visual Arts & studies',
+            sources: '0',
             topic: '',
             format: '',
             instructions: '',
-            academic_level: '',
+            academic_level: 'UNDERGRADUATE',
             pages: '',
             spacing: '',
             deadline: '',
@@ -49,7 +49,7 @@ class Orders extends Component{
     }
 
     handleFormChange = (key, value) => {
-        this.setState({key: value})
+        this.setState({[key]: value})
     };
 
     handleForm1Submit = (event, idx) => {
