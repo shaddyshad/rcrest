@@ -15,6 +15,8 @@ import Form3 from './Forms/Form3';
 import Form4 from './Forms/Form4';
 import Form5 from './Forms/Form5';
 
+import {Switch, Route} from 'react-router-dom';
+
 class Orders extends Component{
     constructor(props){
         super(props);
@@ -50,7 +52,7 @@ class Orders extends Component{
         this.setState({key: value})
     };
 
-    handleForm1Submit = (event) => {
+    handleForm1Submit = (event, idx) => {
         event.preventDefault();
     };
 
@@ -65,7 +67,7 @@ class Orders extends Component{
             onSourcesChange={(event) => this.handleFormChange('sources', event.target.key)}
             onFormatChange={(event) => this.handleFormChange('format', event.target.key)}
             onTopicsChange={(event) => this.handleFormChange('topic', event.target.key)}
-            onSubmit={this.handleSubmit}
+            onSubmit={(event) => this.handleSubmit(event, 1)}
         /></div>;
         const form2 = <Form2
             instructions={instructions}
@@ -104,15 +106,24 @@ class Orders extends Component{
                 />
             </div>
         );
-
         const form5 = (<Form5/>);
+
+        const formList = [form1, form2, form3, form4, form5];
+
         return (
             <div className="orders">
                 <Navbar/>
                 <Grid>
                     <Row>
                         <Col xs={12} md={7}>
-                            {form5}
+                            <Switch>
+                                <Route exact path='/orders' children={form1}/>
+                                <Route path='/orders/1' children={form2}/>
+                                <Route path='/orders/2' children={form3}/>
+                                <Route path='/orders/3' children={form4}/>
+                                <Route path='/orders/4' children={form5}/>
+
+                            </Switch>
                         </Col>
                         <Col xsHidden md={5}><Sidebar sidebar={this.state.sidebar} header="Our Exclusive offers"/></Col>
                     </Row>
