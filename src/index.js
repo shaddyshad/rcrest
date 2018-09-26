@@ -21,12 +21,18 @@ import {
     faCertificate,
     faComment,
     faFutbol,
-
+    faBullhorn,
+    faQuestionCircle,
+    faCheckCircle,
+    faMapMarkerAlt,
+    faHistory,
+    faClock
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
     faShieldAlt, faGem, faBriefcase, faUser, faEnvelopeOpenText, faDollarSign, faFile, fab,
-    faGraduationCap, faEdit, faCertificate, faComment, faFutbol
+    faGraduationCap, faEdit, faCertificate, faComment, faFutbol, faBullhorn, faQuestionCircle,
+    faCheckCircle, faMapMarkerAlt, faHistory, faClock
 );
 
 ReactDOM.render(
