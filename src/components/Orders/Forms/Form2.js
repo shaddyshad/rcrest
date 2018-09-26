@@ -39,7 +39,7 @@ class Form1 extends Component{
                     <HelpBlock>You will be able to upload files after order submission</HelpBlock>
                 </FormGroup>
 
-                <Button><Link to="/orders/2">Next</Link></Button>
+                <Link to="/orders/2"><Button>Next</Button></Link>
 
             </Form>
         );

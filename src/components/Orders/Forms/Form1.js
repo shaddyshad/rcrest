@@ -171,7 +171,7 @@ class Form1 extends Component{
                     </Radio>
                 </FormGroup>
 
-                <Button> <Link to='/orders/1'>Next</Link></Button>
+                <Link to='/orders/1'><Button>Next</Button></Link>
 
             </Form>
         );

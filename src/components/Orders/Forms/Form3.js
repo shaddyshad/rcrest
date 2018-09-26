@@ -112,7 +112,7 @@ class Form1 extends Component {
 
 
                 <HelpBlock>Amount: {amount}</HelpBlock>
-                <Button><Link to='/orders/3'>Next</Link></Button>
+                <Link to='/orders/3'><Button>Next</Button></Link>
 
             </Form>
         );
