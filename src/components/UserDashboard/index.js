@@ -15,7 +15,7 @@ class Root extends Component{
         const {username} = this.state.user;
         return (
             <div>
-                <NavBar username={username}/>
+                <NavBar username={username} notifications={4}/>
                 <Body/>
             </div>
         );

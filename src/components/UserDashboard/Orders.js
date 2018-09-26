@@ -1,31 +1,31 @@
 import React from 'react';
 
 import {
-    Table
+    Button,
+    Panel,
+    HelpBlock
 } from 'react-bootstrap';
 
 const Orders = ({orders}) => {
-    return(
-        <Table>
-            <thead>
-            <tr>
-                <th>TYPE</th>
-                <th>PAGES</th>
-                <th>AMOUNT</th>
-                <th>WRITER'S ID</th>
-                <th>STATUS</th>
-            </tr>
-            </thead>
-            <tbody>
-            {orders.map(({type, pages, amount, writer_id, status}) => (<tr>
-                <td>{type}</td>
-                <td>{pages}</td>
-                <td>{amount}</td>
-                <td>{writer_id}</td>
-                <td>{status}</td>
-            </tr>))}
-            </tbody>
-        </Table>
+    return (
+        <div>
+            {orders.map(({type, pages, amount, writer_id, status}) => (
+                <Panel>
+                    <Panel.Heading> {type} </Panel.Heading>
+                    <Panel.Body>
+                        <span>{pages} <HelpBlock>Pages</HelpBlock></span>
+                        <span>$ {amount} </span> <br/>
+                        <span>Writer's ID: {writer_id}</span>
+                    </Panel.Body>
+                    <Panel.Footer>
+                        {status}
+
+                        <Button>View</Button>
+                    </Panel.Footer>
+                </Panel>
+            ))}
+
+        </div>
     );
 };
 
