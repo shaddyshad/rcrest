@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Button, ControlLabel, Form, FormControl, FormGroup, HelpBlock} from "react-bootstrap";
 
+import {Link} from 'react-router-dom';
+
 class PriceCalculator extends Component {
 
     constructor(props) {
@@ -13,7 +15,7 @@ class PriceCalculator extends Component {
     }
 
     handleLevelChange = (e) => {
-       this.setState({level: parseFloat(e.target.value, 10)});
+        this.setState({level: parseFloat(e.target.value, 10)});
     };
 
     handlePeriodChange = (e) => {
@@ -24,7 +26,7 @@ class PriceCalculator extends Component {
         this.setState({pages: parseFloat(e.target.value, 10)})
     };
 
-    calculate(){
+    calculate() {
         const {level, pages, period} = this.state;
         return Math.round(level * pages * period * 10.5 * 2.0);
     }
@@ -102,8 +104,7 @@ class PriceCalculator extends Component {
 
                     <HelpBlock><h3>Standard Cost: ${this.calculate()}</h3></HelpBlock>
 
-                    <Button type="submit">Continue</Button>
-
+                    <Link to='/orders'><Button type="submit">Continue</Button></Link>
 
                 </Form>
             </div>
