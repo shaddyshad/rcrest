@@ -9,6 +9,8 @@ import {
     HelpBlock, Radio
 } from 'react-bootstrap';
 
+import {Link} from 'react-router-dom';
+
 class Form1 extends Component {
     constructor(props){
         super(props);
@@ -110,7 +112,7 @@ class Form1 extends Component {
 
 
                 <HelpBlock>Amount: {amount}</HelpBlock>
-                <Button type="submit" onClick={onSubmit}>Next</Button>
+                <Button><Link to='/orders/3'>Next</Link></Button>
 
             </Form>
         );

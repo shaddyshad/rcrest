@@ -8,6 +8,8 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 
+import {Link} from 'react-router-dom';
+
 class Form1 extends Component{
 
     constructor(props){
@@ -37,7 +39,7 @@ class Form1 extends Component{
                     <HelpBlock>You will be able to upload files after order submission</HelpBlock>
                 </FormGroup>
 
-                <Button type="submit" onClick={onSubmit}>Next</Button>
+                <Button><Link to="/orders/2">Next</Link></Button>
 
             </Form>
         );

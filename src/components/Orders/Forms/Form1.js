@@ -8,6 +8,10 @@ import {
     Radio
 } from 'react-bootstrap';
 
+import {
+    Link
+} from 'react-router-dom';
+
 class Form1 extends Component{
 
     constructor(props){
@@ -167,7 +171,7 @@ class Form1 extends Component{
                     </Radio>
                 </FormGroup>
 
-                <Button type="submit" onClick={onSubmit}>Next</Button>
+                <Button> <Link to='/orders/1'>Next</Link></Button>
 
             </Form>
         );
