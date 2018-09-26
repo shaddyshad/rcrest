@@ -17,12 +17,16 @@ class CallToActionForm extends Component{
         this.setState({file: e.target.value})
     };
 
+    handleEmailChange = (e) => {
+        this.setState({email: e.target.value})
+    };
+
     render() {
         return (
             <Form inline>
                 <h3>See if we can write your paper now.</h3>
                 <FormGroup controlId="formInlineEmail">
-                    <FormControl type="email" placeholder="Enter Email" value={this.state.email}/>
+                    <FormControl type="email" placeholder="Enter Email" value={this.state.email} onChange={this.handleEmailChange}/>
                     <FormControl.Feedback />
                 </FormGroup>{' '}
                 <FormGroup controlId="formInlineName">

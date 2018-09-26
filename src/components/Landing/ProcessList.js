@@ -37,8 +37,8 @@ class ProcessList extends Component{
 
     renderProcess(){
         const {process} = this.state;
-        return process.map(item =>
-            <Col xs={12} md={3}>
+        return process.map((item, idx) =>
+            <Col xs={12} md={3} key={idx}>
                 <Value header={item.header} icon={item.icon} text={item.text}/>
             </Col>
         )

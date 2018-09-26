@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Col, Grid, Row} from 'react-bootstrap';
 //components
-import LoginForm from './LoginForm';
 import BannerText from './BannerText';
 import PriceCalculator from './PriceCalculator'
 

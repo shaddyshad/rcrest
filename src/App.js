@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 
 //components
-import NavBar from './components/NavBar';
-import Banner from './components/Banner';
-import Values from './components/Values';
-import ProcessList from './components/ProcessList';
-import CTA from './components/CallToAction';
+// import LandingPage from './components/Landing';
+// import Orders from './components/Orders';
+import Admin from './components/Admin';
+import User from './components/UserDashboard';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar/>
-          <Banner/>
-          <Values/>
-          <ProcessList/>
-          <CTA/>
+      {/*<LandingPage/>*/}
+      {/*<Orders/>*/}
+      {/*<Admin notifications={12}/>*/}
+      <User/>
       </div>
     );
   }

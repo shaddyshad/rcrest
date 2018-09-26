@@ -21,8 +21,8 @@ class Values extends Component{
     renderValues(){
         const values = [...this.state.values];
         return(
-            values.map(value =>
-                <Col xs={12} md={4}>
+            values.map((value, idx) =>
+                <Col xs={12} md={4} key={idx}>
                 <Value text={value.text} icon={value.icon} header={value.header}/>
                 </Col>
             )
