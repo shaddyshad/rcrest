@@ -9,7 +9,6 @@ import {LANDING} from "../../Constants/routes";
 import withAuthorization from '../withAuthorization';
 import withAuthentication from '../withAuthentication';
 
-import {withRouter} from 'react-router-dom';
 import {firebase} from "../../firebase";
 
 class Root extends Component {

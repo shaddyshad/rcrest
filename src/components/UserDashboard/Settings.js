@@ -10,7 +10,7 @@ class Settings extends Component{
 
     render(){
         return (
-            <span>Settings</span>
+            <HelpBlock>Settings</HelpBlock>
         );
     }
 }

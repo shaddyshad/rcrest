@@ -67,7 +67,7 @@ class Banner extends Component{
                         <BannerText text={this.getLine()} onTyping={this.done}/> : '' }
                     </Col>
                     {/*Login/ register form*/}
-                    <Col xsHidden md={4}>
+                    <Col xs={12} md={4}>
                         <Switch>
                             <Route exact path='/' component={PriceCalculator}/>
                             <Route path='/login' component={LoginForm} />

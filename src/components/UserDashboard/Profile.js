@@ -8,8 +8,6 @@ import {
     Image,
     HelpBlock,
     Table,
-    ListGroup,
-    ListGroupItem
 } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

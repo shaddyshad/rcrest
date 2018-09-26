@@ -9,14 +9,12 @@ import {
     Panel,
 } from 'react-bootstrap';
 
-import {auth, firebase} from "../../firebase";
+import {auth} from "../../firebase";
 
 
 import {withRouter} from 'react-router-dom';
 
 import Loader from 'react-loader';
-
-import * as routes from '../../Constants/routes';
 
 const INITIAL_STATE = {
     username: '',
