@@ -23,7 +23,8 @@ class Activity extends Component {
     }
 
     render() {
-        const {onComplete} = this.props;
+        const {onComplete, user} = this.props;
+        const {email} = user;
         return (
             <div>
                 <Grid>

@@ -1,30 +1,37 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 import {
     Switch, Route
 } from 'react-router-dom';
 
+
 //components
 import LandingPage from './components/Landing';
 import Orders from './components/Orders';
 import Admin from './components/Admin';
 import User from './components/UserDashboard';
+import ResetForm from './components/Common/ResetPassword';
+
+import withAuthentication from './components/withAuthentication';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <Switch>
-          <Route path='/orders' component={Orders}/>
-          <Route exact path='/sadmin' component={Admin}/>
-          <Route exact path='/users' component={User}/>
-          <Route path='/' component={LandingPage}/>
-      </Switch>
-      </div>
-    );
-  }
+    render() {
+        const Account = (<User/>);
+        return (
+
+            <div className="App">
+                <Switch>
+                    <Route path='/orders' component={Orders}/>
+                    <Route exact path='/sadmin' component={Admin}/>
+                    <Route exact path='/account/:id' children={Account}/>
+                    <Route path='/reset' component={ResetForm}/>
+                    <Route path='/' component={LandingPage}/>
+                </Switch>
+            </div>
+        );
+    }
 }
 
 
-export default App;
+export default withAuthentication(App);

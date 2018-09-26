@@ -9,8 +9,8 @@ import {
 const Orders = ({orders}) => {
     return (
         <div>
-            {orders.map(({type, pages, amount, writer_id, status}) => (
-                <Panel>
+            {orders.map(({type, pages, amount, writer_id, status}, idx) => (
+                <Panel key={idx}>
                     <Panel.Heading> {type} </Panel.Heading>
                     <Panel.Body>
                         <span>{pages} <HelpBlock>Pages</HelpBlock></span>

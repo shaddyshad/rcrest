@@ -13,12 +13,19 @@ import {
 } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import withAuthorization from "../withAuthorization";
 
 class Profile extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
 
-    state = {};
+        }
+    }
 
     render() {
+        const {user} = this.props;
+        const {email} = user;
         return (
             <div>
                 <Grid>
@@ -27,7 +34,7 @@ class Profile extends Component {
                             <Image thumbnail src='images/boy.png'/>
                         </Col>
                         <Col xs={12} md={3}>
-                            <h3>Shaddy shad</h3>
+                            <h3>{email}</h3>
                             <code>Write something about yourself</code>
                         </Col>
                         <Col xs={12} md={4}>
@@ -61,4 +68,6 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const authCondition = (authUser) => !!authUser;
+
+export default withAuthorization(authCondition)(Profile);

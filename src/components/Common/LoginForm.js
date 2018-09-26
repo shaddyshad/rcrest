@@ -5,60 +5,94 @@ import {
     FormControl,
     ControlLabel,
     Button,
-    HelpBlock
+    HelpBlock,
+    Panel
 } from 'react-bootstrap';
 
-class LoginForm extends Component{
+import {Link, withRouter} from 'react-router-dom';
+import {auth} from '../../firebase';
+import * as routes from '../../Constants/routes';
 
-    state = {
-        username: '',
-        password: ''
-    };
+const INITIAL_STATE = {
+    email: '',
+    password: '',
+    error: null
+}
 
-    handleUsernameChange = (event) => {
-        this.setState({username: event.target.value})
+class LoginForm extends Component {
+    constructor(props){
+        super(props);
+        this.state = INITIAL_STATE;
+    }
+
+    handleEmailChange = (event) => {
+        this.setState({email: event.target.value})
     };
 
     handlePasswordChange = (event) => {
         this.setState({password: event.target.value})
     };
 
-    createAccount = (event) => {
-        event.preventDefault();
-        console.log(`Requesting to create an account`);
-    };
-    
-    render(){
-        return (
-            <Form>
-                <FormGroup
-                    controlId="basic-username"
-                >
-                    <ControlLabel>Username</ControlLabel>
-                    <FormControl
-                        type="text"
-                        value={this.state.username}
-                        placeholder="Your username"
-                        onChange={this.handleUsernameChange}
-                    />
-                </FormGroup>
-                <FormGroup
-                    controlId="formBasicText"
-                >
-                    <ControlLabel>Password</ControlLabel>
-                    <FormControl
-                        type="password"
-                        value={this.state.password}
-                        placeholder="Your Password"
-                        onChange={this.handlePasswordChange}
-                    />
-                </FormGroup>
-                <Button type="submit">Login</Button>
 
-                <HelpBlock>Or click <a onClick={this.createAccount}>here</a> to create an account</HelpBlock>
-            </Form>
+    handleSubmit = (event) => {
+        const {email, password} = this.state;
+
+        const {history} = this.props;
+        auth.doSignInWithEmailAndPassword(email, password)
+            .then((user) => {
+                this.setState({ ...INITIAL_STATE });
+                console.log(`Inside login - ${user.Q.metadata}`);
+                history.push(routes.ACCOUNT);
+            })
+            .catch(error => {
+                this.setState({error});
+            });
+        event.preventDefault();
+    }
+
+    render() {
+        const {email, password, error} = this.state;
+
+        const isInvalid =
+            password === '' ||
+            email === '';
+        return (
+            <div>
+                <Panel>
+                    <Panel.Body>
+                        <Form onSubmit={this.handleSubmit}>
+                            <FormGroup
+                                controlId="basic-email"
+                            >
+                                <ControlLabel>Email</ControlLabel>
+                                <FormControl
+                                    type="email"
+                                    value={email}
+                                    placeholder="Your Email"
+                                    onChange={this.handleEmailChange}
+                                />
+                            </FormGroup>
+                            <FormGroup
+                                controlId="formBasicText"
+                            >
+                                <ControlLabel>Password</ControlLabel>
+                                <FormControl
+                                    type="password"
+                                    value={password}
+                                    placeholder="Your Password"
+                                    onChange={this.handlePasswordChange}
+                                />
+                            </FormGroup>
+                            <Button type="submit" disabled={isInvalid}>Login</Button>
+                            <HelpBlock><Link to='/reset'>Forgot password?</Link></HelpBlock>
+                        </Form>
+                    </Panel.Body>
+                    { error && <p>{error.message}</p> }
+                </Panel>
+                <HelpBlock>Don't have an account? <Link to='/register'>Sign up.</Link></HelpBlock>
+            </div>
         );
     }
 }
 
-export default LoginForm
+export default withRouter(LoginForm);

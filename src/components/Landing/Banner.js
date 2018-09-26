@@ -9,7 +9,7 @@ import {
 import BannerText from './BannerText';
 import PriceCalculator from './PriceCalculator';
 import LoginForm from '../Common/LoginForm';
-import RegisterForm from '../Common/RegisterForm'
+import RegisterForm from '../Common/RegisterForm';
 
 /*
 * routes

@@ -41,13 +41,14 @@ class Body extends Component {
     };
 
     getScreen(){
-        const screens = [<Activity orders={this.state.orders}/>, <Profile/>];
+        const screens = [<Activity orders={this.state.orders} user={this.props.user}/>, <Profile user={this.props.user}/>];
         const {activeScreen} = this.state;
         return screens[activeScreen];
     }
 
 
     render() {
+        const {user: {email}} = this.props;
         return (
             <div>
                 <Grid fluid>
@@ -60,6 +61,7 @@ class Body extends Component {
                                 <Panel.Heading>
                                     <Row>
                                         {this.renderMenu()}
+                                        <Col xsHidden md={2}>{email}</Col>
                                     </Row>
                                 </Panel.Heading>
                                 <Panel.Body>

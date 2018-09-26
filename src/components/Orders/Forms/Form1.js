@@ -107,7 +107,7 @@ class Form1 extends Component{
 
 
     render(){
-        const {topic, sources, onTypeChange, onSourcesChange, onFormatChange, onTopicsChange, onSubmit} = this.props;
+        const {topic, sources, onTypeChange, onSourcesChange, onFormatChange, onTopicsChange} = this.props;
         return (
             <Form>
                 <FormGroup controlId="basic-paper">
