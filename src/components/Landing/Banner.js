@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
 import {Col, Grid, Row} from 'react-bootstrap';
+import {
+    Route,
+    Switch
+} from 'react-router-dom';
+
 //components
 import BannerText from './BannerText';
-import PriceCalculator from './PriceCalculator'
+import PriceCalculator from './PriceCalculator';
+import LoginForm from '../Common/LoginForm';
+import RegisterForm from '../Common/RegisterForm'
+
+/*
+* routes
+* / - pricecalculator
+* /loging - Login Form
+* /register - Register form
+* */
+
 
 
 class Banner extends Component{
@@ -41,6 +56,7 @@ class Banner extends Component{
 
     
     render(){
+        const Register = <RegisterForm control={true}/>
         return (
             <Grid>
                 <Row className="show-grid">
@@ -52,7 +68,11 @@ class Banner extends Component{
                     </Col>
                     {/*Login/ register form*/}
                     <Col xsHidden md={4}>
-                        <PriceCalculator/>
+                        <Switch>
+                            <Route exact path='/' component={PriceCalculator}/>
+                            <Route path='/login' component={LoginForm} />
+                            <Route path='/register' children={Register}/>
+                        </Switch>
                     </Col>
                 </Row>
             </Grid>
