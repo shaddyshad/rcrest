@@ -35,7 +35,7 @@ class RegisterForm extends Component{
                 <FormGroup
                     controlId="basic-username"
                 >
-                    <ControlLabel>Username</ControlLabel>
+                    { this.props.control ? <ControlLabel>Username</ControlLabel> : null}
                     <FormControl
                         type="text"
                         value={this.state.username}
@@ -46,7 +46,7 @@ class RegisterForm extends Component{
                 <FormGroup
                     controlId="formBasicText"
                 >
-                    <ControlLabel>Email</ControlLabel>
+                    { this.props.control ? <ControlLabel>Username</ControlLabel> : null}
                     <FormControl
                         type="email"
                         value={this.state.email}
@@ -57,7 +57,7 @@ class RegisterForm extends Component{
                 <FormGroup
                     controlId="formBasicText"
                 >
-                    <ControlLabel>Password</ControlLabel>
+                    { this.props.control ? <ControlLabel>Username</ControlLabel> : null}
                     <FormControl
                         type="password"
                         value={this.state.password}
@@ -67,7 +67,7 @@ class RegisterForm extends Component{
                 </FormGroup>
                 <Button type="submit">Create an Account</Button>
 
-                <HelpBlock>By clicking "Create an Account" you agree to our <a href="//">terms of use</a> and out <a href="//">privacy policy</a> </HelpBlock>
+                { this.props.control ? <HelpBlock>By clicking "Create an Account" you agree to our <a href="//">terms of use</a> and out <a href="//">privacy policy</a> </HelpBlock> : ''}
             </Form>
         );
     }
