@@ -5,12 +5,16 @@ import {
     NavItem
 } from 'react-bootstrap';
 
+import {
+    Link
+} from 'react-router-dom';
+
 const Navigation = (props) => {
     return (
         <Navbar staticTop>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <span>Research crest</span>
+                    <Link to='/'>Research crest</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle/>
             </Navbar.Header>
@@ -20,8 +24,8 @@ const Navigation = (props) => {
                 <NavItem eventKey={1} href="#">FAQs</NavItem>
                 <NavItem eventKey={1} href="#">HOW IT WORKS</NavItem>
                 <NavItem eventKey={1} href="#">ABOUT</NavItem>
-                <NavItem eventKey={1} href="#">ORDER</NavItem>
-                <NavItem eventKey={1} href="#">LOGIN</NavItem>
+                <NavItem eventKey={1}><Link to='/orders'>ORDER</Link></NavItem>
+                <NavItem eventKey={1}><Link to='/login'>LOGIN</Link></NavItem>
             </Nav>
             </Navbar.Collapse>
         </Navbar>
