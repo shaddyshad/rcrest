@@ -25,7 +25,7 @@ class ProcessList extends Component{
             {
                 icon: 'user',
                 header: 'We assign your order',
-                text: 'After you have paid for your order, we will receive it and its status will show as "Under Review". At this stage of your order, we review it to determine the most qualified writer to handle it. We then assign it and the status changes to "In Progress", the stage during which you can chat with the writer to monitor the order\'s progress.'
+                text: 'After you have paid for your order, we will receive it and its status will show as "Under Review". At this stage of your order, we review it to determine the most qualified writer to handle it. We then assign it and the status changes to "In Notifications", the stage during which you can chat with the writer to monitor the order\'s progress.'
             },
             {
                 icon: 'envelope-open-text',
