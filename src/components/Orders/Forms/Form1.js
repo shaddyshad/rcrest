@@ -176,7 +176,7 @@ class Form1 extends Component{
                     </Radio>
                 </FormGroup>
 
-                <Link to='/orders/1'><Button disabled={isInvalid}>Next</Button></Link>
+                {this.props.hideButton ? null :<Link to='/orders/1'><Button disabled={isInvalid}>Next</Button></Link>}
 
             </Form>
         );

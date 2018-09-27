@@ -41,7 +41,7 @@ class Form1 extends Component{
                     <HelpBlock>You will be able to upload files after order submission</HelpBlock>
                 </FormGroup>
 
-                <Link to="/orders/2"><Button>Next</Button></Link>
+                {this.props.hideButton ? null : <Link to="/orders/2"><Button>Next</Button></Link>}
 
             </Form>
         );

@@ -46,10 +46,10 @@ class Form1 extends Component {
         return (
             <div>
                 <ListGroup>
-                    <ListGroupItem><Link to='/orders'>1. PAPER DETAILS</Link></ListGroupItem>
-                    <ListGroupItem><Link to='/orders/1'> 2. PAPER INSTRUCTIONS</Link></ListGroupItem>
-                    <ListGroupItem><Link to='/orders/2'>3. PRICE CALCULATIONS</Link></ListGroupItem>
-                    <ListGroupItem><Link to='/orders/3'>4. ADDITIONAL FEATURES</Link></ListGroupItem>
+                    {/*<ListGroupItem><Link to='/orders'>1. PAPER DETAILS</Link></ListGroupItem>*/}
+                    {/*<ListGroupItem><Link to='/orders/1'> 2. PAPER INSTRUCTIONS</Link></ListGroupItem>*/}
+                    {/*<ListGroupItem><Link to='/orders/2'>3. PRICE CALCULATIONS</Link></ListGroupItem>*/}
+                    {/*<ListGroupItem><Link to='/orders/3'>4. ADDITIONAL FEATURES</Link></ListGroupItem>*/}
                     <ListGroupItem>
                         5. PAYMENT INFO
                         <HelpBlock>Amount: ${amount}</HelpBlock>

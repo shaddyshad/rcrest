@@ -48,7 +48,7 @@ class Form1 extends Component {
 
                 <HelpBlock>Amount: {amount}</HelpBlock>
 
-               <Link to='/orders/4'><Button>Next</Button></Link>
+                {this.props.hideButton ? null : <Link to='/orders/4'><Button>Next</Button></Link>}
 
             </Form>
         );
