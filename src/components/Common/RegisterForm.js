@@ -13,8 +13,8 @@ import {auth} from "../../firebase";
 
 
 import {withRouter} from 'react-router-dom';
+import Spinner from "../Landing/Loader";
 
-import Loader from 'react-loader';
 
 const INITIAL_STATE = {
     username: '',
@@ -22,7 +22,8 @@ const INITIAL_STATE = {
     password: '',
     password2: '',
     error: null,
-    loaded: true
+    loaded: true,
+    loaderShown: false
 };
 
 class RegisterForm extends Component {
@@ -51,36 +52,41 @@ class RegisterForm extends Component {
         const {username, email, password} = this.state;
 
         const {history} = this.props;
+        this.setState({loaderShown: true}, () => {
+            setTimeout(() => {
+                auth.doCreateUserWithEmailAndPassword(email, password)
+                    .then(authUser => {
+                        setTimeout(() => {
+                            const {uid} = authUser.user;
+                            //get the first few characters - 10
+                            let path = uid.substr(0, 10);
+                            path = `/account/${path}`;
+                            this.setState({...INITIAL_STATE, loaderShown: false});
+                            history.push(path);
+                        }, 2000)
 
-        auth.doCreateUserWithEmailAndPassword(email, password)
-            .then(authUser => {
-                setTimeout(() => {
-                    const {uid} = authUser.user;
-                    //get the first few characters - 10
-                    let path = uid.substr(0, 10);
-                    path = `/account/${path}`;
-                    this.setState({...INITIAL_STATE, loaded: false});
-                    history.push(path);
-                }, 2000)
+                    })
+                    .catch(error => {
+                        this.setState({error, loaderShown: false});
+                    });
+            }, 1000)
+        })
 
-            })
-            .catch(error => {
-                this.setState({error});
-            });
+
         event.preventDefault();
 
     };
 
     render() {
-        const {error, password, password2, email, username, loaded} = this.state;
+        const {error, password, password2, email, username, loaderShown} = this.state;
         const isInvalid =
             password !== password2 ||
             password2 === '' ||
             email === '' ||
             username === '';
         return (
-            <Loader loaded={loaded}>
-                <Panel>
+            <div>
+                {loaderShown ? <Spinner/> : <Panel style={styles.form}>
                     <Panel.Body>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup controlId="basic-username">
@@ -129,10 +135,18 @@ class RegisterForm extends Component {
                         </Form>
                     </Panel.Body>
                     {error && <p>{error.message}</p>}
-                </Panel>
-            </Loader>
+                </Panel>}
+
+            </div>
         );
     }
+}
+
+const styles = {
+    form: {
+        backgroundColor: '#FFBA00',
+        borderRadius: 20
+    },
 }
 
 export default withRouter(RegisterForm);

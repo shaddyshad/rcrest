@@ -32,7 +32,7 @@ class Values extends Component{
     render(){
         return (
             <div style={styles.outline}>
-                <h3>Why choose us</h3>
+                <h3 style={styles.a}>Why choose us</h3>
                 <Grid>
                     <Row className="show-grid">
                         {this.renderValues()}
@@ -46,7 +46,11 @@ class Values extends Component{
 const styles = {
     outline: {
         border: '1px solid black'
+    },
+    a: {
+        fontSize: 23,
+        color: '#D6EFFF'
     }
-}
+};
 
 export default Values

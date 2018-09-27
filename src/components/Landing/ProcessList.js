@@ -47,8 +47,8 @@ class ProcessList extends Component{
     render(){
         return (
             <div style={styles.outline}>
-                <h3>How Do I Get My Paper Done at Research Paper Crest?</h3>
-                <HelpBlock>We have the privilege of dealing with the most professional writers ever.</HelpBlock>
+                <h3 style={styles.header}>How Do I Get My Paper Done at Research Paper Crest?</h3>
+                <HelpBlock style={styles.block}>We have the privilege of dealing with the most professional writers ever.</HelpBlock>
                 <Grid>
                     <Row className="show-grid">
                         {this.renderProcess()}
@@ -62,6 +62,16 @@ class ProcessList extends Component{
 const styles = {
     outline: {
         border: '1px solid black'
+    },
+    header: {
+        fontSize: 40,
+        margin: '1em 0',
+        color: '#000',
+        font: '600 28px/1.25 Roboto Mono, monospace'
+    },
+    block: {
+        marginBottom: 60,
+        fontSize: 20
     }
 }
 

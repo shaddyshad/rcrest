@@ -37,7 +37,7 @@ const Navigation = ({username, notifications, doSignOut}) => {
                     <NavDropdown eventKey="4" title={`Hi ${username}`} id="nav-dropdown">
                         <MenuItem eventKey="4.1">Profile</MenuItem>
                         <MenuItem eventKey="4.2">Settins</MenuItem>
-                        <MenuItem eventKey="4.3" onClick={auth.doSignOut}>Logout</MenuItem>
+                        <MenuItem eventKey="4.3" onClick={doSignOut}>Logout</MenuItem>
                         <MenuItem divider />
                         <MenuItem eventKey="4.4">Terms and conditions</MenuItem>
                         <MenuItem eventKey="4.4">Money back policy</MenuItem>

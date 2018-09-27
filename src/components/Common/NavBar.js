@@ -2,14 +2,15 @@ import React from 'react';
 import {
     Navbar,
     Nav,
-    NavItem
+    NavItem,
+    Button
 } from 'react-bootstrap';
 
 import {
     Link
 } from 'react-router-dom';
 
-const Navigation = (props) => {
+const Navigation = ({onLogin, showLogin}) => {
     return (
         <Navbar staticTop>
             <Navbar.Header>
@@ -25,7 +26,8 @@ const Navigation = (props) => {
                 <NavItem eventKey={1} href="#">HOW IT WORKS</NavItem>
                 <NavItem eventKey={1} href="#">ABOUT</NavItem>
                 <NavItem eventKey={1}><Link to='/orders'>ORDER</Link></NavItem>
-                <NavItem eventKey={1}><Link to='/login'>LOGIN</Link></NavItem>
+                <NavItem eventKey={1}><Button onClick={onLogin}>LOGIN</Button></NavItem>
+
             </Nav>
             </Navbar.Collapse>
         </Navbar>
