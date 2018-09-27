@@ -26,13 +26,27 @@ import {
     faCheckCircle,
     faMapMarkerAlt,
     faHistory,
-    faClock
+    faClock,
+    faCartPlus,
+    faCheckSquare,
+    faListUl,
+    faServer,
+    faBell,
+    faMoneyBill,
+    faArrowCircleRight,
+    faTachometerAlt,
+    faPlusCircle,
+    faStopwatch,
+    faSpinner,
+    faRandom
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
     faShieldAlt, faGem, faBriefcase, faUser, faEnvelopeOpenText, faDollarSign, faFile, fab,
     faGraduationCap, faEdit, faCertificate, faComment, faFutbol, faBullhorn, faQuestionCircle,
-    faCheckCircle, faMapMarkerAlt, faHistory, faClock
+    faCheckCircle, faMapMarkerAlt, faHistory, faClock, faServer, faCartPlus, faCheckSquare, faListUl,faBell,
+    faMoneyBill, faArrowCircleRight, faTachometerAlt, faPlusCircle, faStopwatch,faSpinner, faRandom
+
 );
 
 ReactDOM.render(
