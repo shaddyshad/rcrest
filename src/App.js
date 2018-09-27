@@ -27,6 +27,8 @@ class App extends Component {
                     <Route path='/account/:id' children={Account}/>
                     <Route path='/reset' component={ResetForm}/>
                     <Route exact path='/' component={LandingPage}/>
+                    <Route exact path='/login' component={LandingPage}/>
+                    <Route exact path='/register' component={LandingPage}/>
                 </Switch>
             </div>
         );
