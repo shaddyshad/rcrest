@@ -4,15 +4,20 @@ import Typist from 'react-typist';
 const BannerText = ({text, onTyping}) => {
     return(
         <Typist
-            className="TypistExample-header"
             avgTypingSpeed={40}
             startDelay={2000}
             onLineTyped={onTyping}
-            cursor={{show: true}}
+            cursor={{show: false}}
         >
-            <span>{text}</span>
+            <h1 style={styles.k}>{text}</h1>
         </Typist>
     );
 };
+
+const styles = {
+    k: {
+        color: '#FED18C'
+    }
+}
 
 export default BannerText
