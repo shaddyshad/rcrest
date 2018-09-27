@@ -41,8 +41,10 @@ class LoginForm extends Component {
         auth.doSignInWithEmailAndPassword(email, password)
             .then((user) => {
                 this.setState({ ...INITIAL_STATE });
-                console.log(`Inside login - ${user.Q.metadata}`);
-                history.push(routes.ACCOUNT);
+                const {uid} = user.user;
+                let path = uid.substr(0, 10);
+                path = `/account/${path}`;
+                history.push(path);
             })
             .catch(error => {
                 this.setState({error});
