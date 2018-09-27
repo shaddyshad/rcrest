@@ -15,10 +15,11 @@ import Form3 from './Forms/Form3';
 import Form4 from './Forms/Form4';
 import Form5 from './Forms/Form5';
 
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
+import Spinner from "../Landing/Loader";
 
-class Orders extends Component{
-    constructor(props){
+class Orders extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             type: 'Visual Arts & studies',
@@ -44,7 +45,8 @@ class Orders extends Component{
                 {text: 'Comprehensive money back policy', icon: 'dollar-sign'},
                 {text: 'Easy messaging and communication', icon: 'comment'},
                 {text: 'Responsive support team', icon: 'futbol'}
-            ]
+            ],
+            loaderShown: false
         };
     }
 
@@ -56,9 +58,25 @@ class Orders extends Component{
         event.preventDefault();
     };
 
+    handleLoginClick = (event) => {
+        const {history} = this.props;
+        console.log(history.location.pathname);
+        if (history.location.pathname === '/login')
+            history.push('/login');
+        else
+            this.setState(
+                {loaderShown: true}, () => {
+                    setTimeout(() => {
+                        history.push('/login');
+                        this.setState({loaderShown: false});
+                    }, 1000)
+                }
+            )
+    };
 
-    render(){
-        const {sources, topic, format, instructions,pages, writer_id, discount_code, amount} = this.state;
+
+    render() {
+        const {sources, topic, format, instructions, pages, writer_id, discount_code, amount, loaderShown} = this.state;
         const form1 = <div><h3>Paper Details</h3><Form1
             sources={sources}
             topic={topic}
@@ -111,8 +129,8 @@ class Orders extends Component{
 
         return (
             <div className="orders">
-                <Navbar/>
-                <Grid>
+                <Navbar onLogin={this.handleLoginClick}/>
+                {loaderShown ? <Spinner/> : <Grid>
                     <Row>
                         <Col xs={12} md={7}>
                             <Switch>
@@ -126,10 +144,11 @@ class Orders extends Component{
                         </Col>
                         <Col xsHidden md={5}><Sidebar sidebar={this.state.sidebar} header="Our Exclusive offers"/></Col>
                     </Row>
-                </Grid>
+                </Grid>}
+
             </div>
         );
     }
 }
 
-export default Orders
+export default withRouter(Orders)
