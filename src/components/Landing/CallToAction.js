@@ -12,10 +12,10 @@ const CTA = (props) => {
         <div style={styles.cta}>
             <Grid>
                 <Row className="show-grid">
-                    <Col xsHidden md={4}>
+                    <Col xsHidden md={4} style={styles.b}>
                         <h2>Are you crunched for time?</h2>
                     </Col>
-                    <Col xs={12} md={8}>
+                    <Col xs={12} md={8} >
                         <CTAForm/>
                     </Col>
                     <HelpBlock>We promise to respond soon.</HelpBlock>
@@ -28,6 +28,12 @@ const CTA = (props) => {
 const styles = {
     cta: {
         border: '1px solid black'
+    },
+    a: {
+        backgroundColor: '#D6EFFF'
+    },
+    b: {
+        backgroundColor: '#FED18C'
     }
 }
 
