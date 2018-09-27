@@ -24,7 +24,17 @@ const Navigation = ({username, notifications, doSignOut}) => {
             </Navbar.Header>
             <Navbar.Collapse>
                 <Nav pullRight>
-                    <NavDropdown eventKey="4" title="Profile" id="nav-dropdown">
+                    <NavItem eventKey={1} href="#">
+                        {/*<OverlayTrigger placement="bottom" overlay={<Tooltip>Notifications</Tooltip>}>*/}
+                        <span><FontAwesomeIcon icon='bell'/>
+                        <Label bsStyle="danger">{notifications}</Label>
+                        </span>
+                        {/*</OverlayTrigger>*/}
+                    </NavItem>
+                    <NavItem eventKey={1} href="#">
+                        <span><FontAwesomeIcon icon='cart-plus'/> Place Order</span>
+                    </NavItem>
+                    <NavDropdown eventKey="4" title={`Hi ${username}`} id="nav-dropdown">
                         <MenuItem eventKey="4.1">Profile</MenuItem>
                         <MenuItem eventKey="4.2">Settins</MenuItem>
                         <MenuItem eventKey="4.3" onClick={auth.doSignOut}>Logout</MenuItem>
@@ -32,18 +42,7 @@ const Navigation = ({username, notifications, doSignOut}) => {
                         <MenuItem eventKey="4.4">Terms and conditions</MenuItem>
                         <MenuItem eventKey="4.4">Money back policy</MenuItem>
                     </NavDropdown>
-                    <NavItem eventKey={1} href="#">
-                        {/*<OverlayTrigger placement="bottom" overlay={<Tooltip>Notifications</Tooltip>}>*/}
-                        <span><FontAwesomeIcon icon='bullhorn'/>
-                        <Label bsStyle="danger">{notifications}</Label>
-                        </span>
-                        {/*</OverlayTrigger>*/}
-                    </NavItem>
-                    <NavItem eventKey={1} href="#">
-                        {/*<OverlayTrigger placement="bottom" overlay={<Tooltip>Help</Tooltip>}>*/}
-                        <FontAwesomeIcon icon='question-circle'/>
-                        {/*</OverlayTrigger>*/}
-                    </NavItem>
+
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
