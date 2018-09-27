@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bdc19a2-1d9b-4ce8-9db1-c53cb32474ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Reducers/allOrders.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Landing/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/RegisterForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/BannerText.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/BannerText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/CallToAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/CallToAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/CallToActionForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/CallToActionForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/PriceCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/PriceCalculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/ProcessList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/ProcessList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/Values.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/Values.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Orders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Orders/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserDashboard/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserDashboard/NavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserDashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserDashboard/index.js" afterDir="false" />
     </list>
@@ -50,7 +29,7 @@
           <entry key="ejs" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="html" value="2" />
-          <entry key="js" value="224" />
+          <entry key="js" value="225" />
           <entry key="json" value="2" />
           <entry key="lock" value="1" />
         </counts>
@@ -61,7 +40,7 @@
           <entry key="EJS" value="1" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="224" />
+          <entry key="JavaScript" value="225" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="yarn.lock" value="1" />
         </counts>
@@ -71,9 +50,9 @@
           <entry key="css" value="1" />
           <entry key="ejs" value="9" />
           <entry key="html" value="22" />
-          <entry key="js" value="46823" />
+          <entry key="js" value="46874" />
           <entry key="json" value="20" />
-          <entry key="txt" value="425" />
+          <entry key="txt" value="605" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -82,8 +61,8 @@
           <entry key="EJS" value="9" />
           <entry key="HTML" value="22" />
           <entry key="JSON" value="20" />
-          <entry key="JavaScript" value="46823" />
-          <entry key="PLAIN_TEXT" value="425" />
+          <entry key="JavaScript" value="46874" />
+          <entry key="PLAIN_TEXT" value="605" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -92,18 +71,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Landing/PriceCalculator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="127" column="25" lean-forward="true" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Common/LoginForm.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/UserDashboard/NavBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="39" column="58" lean-forward="true" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+            <state relative-caret-position="273">
+              <caret line="36" column="89" selection-start-line="36" selection-start-column="89" selection-end-line="36" selection-end-column="89" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -141,13 +108,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/UserDashboard/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+            <state relative-caret-position="138">
+              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Reducers/allOrders.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -291,8 +270,8 @@
         <option value="$PROJECT_DIR$/src/components/Orders/index.js" />
         <option value="$PROJECT_DIR$/src/components/Landing/index.js" />
         <option value="$PROJECT_DIR$/src/components/Common/RegisterForm.js" />
-        <option value="$PROJECT_DIR$/src/components/UserDashboard/NavBar.js" />
         <option value="$PROJECT_DIR$/src/components/UserDashboard/index.js" />
+        <option value="$PROJECT_DIR$/src/components/UserDashboard/NavBar.js" />
       </list>
     </option>
   </component>
@@ -448,7 +427,7 @@
       <option name="presentableId" value="Default" />
       <updated>1537768177886</updated>
       <workItem from="1537768180402" duration="92825000" />
-      <workItem from="1538027856928" duration="4908000" />
+      <workItem from="1538027856928" duration="5517000" />
     </task>
     <task id="LOCAL-00001" summary="Default to npm">
       <created>1537957790695</created>
@@ -583,11 +562,74 @@
       <option name="project" value="LOCAL" />
       <updated>1538009021092</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Orders reducer">
+      <created>1538032834866</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032834866</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Configure main app components">
+      <created>1538032853835</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032853835</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fix Banner text and loader">
+      <created>1538032870057</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032870057</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix form links and loader">
+      <created>1538032886564</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032886564</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Add all_orders &#10;constant">
+      <created>1538032916255</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032916255</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Wire together a loader">
+      <created>1538032931285</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032931285</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Wire a loader">
+      <created>1538032944582</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032944582</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Wire a loader">
+      <created>1538032952316</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032952316</updated>
+    </task>
+    <task id="LOCAL-00028" summary="rc-2: Fix loader issue">
+      <created>1538032987600</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1538032987600</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97733000" />
+    <option name="totallyTimeSpent" value="98342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="746" extended-state="0" />
@@ -642,8 +684,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Default to npm" />
-    <MESSAGE value="First release" />
     <MESSAGE value="Change port declaration" />
     <MESSAGE value="Fix form controls" />
     <MESSAGE value="Add a few routes" />
@@ -661,7 +701,15 @@
     <MESSAGE value="Add more items" />
     <MESSAGE value="Include paths" />
     <MESSAGE value="Add login and register paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add login and register paths" />
+    <MESSAGE value="Orders reducer" />
+    <MESSAGE value="Configure main app components" />
+    <MESSAGE value="Fix Banner text and loader" />
+    <MESSAGE value="Fix form links and loader" />
+    <MESSAGE value="Add all_orders &#10;constant" />
+    <MESSAGE value="Wire together a loader" />
+    <MESSAGE value="Wire a loader" />
+    <MESSAGE value="rc-2: Fix loader issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="rc-2: Fix loader issue" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/firebase/index.js">
@@ -876,13 +924,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/Common/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reducers/allOrders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
@@ -1042,22 +1083,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UserDashboard/NavBar.js">
+    <entry file="file://$PROJECT_DIR$/src/Reducers/allOrders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="39" column="58" lean-forward="true" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UserDashboard/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        <state relative-caret-position="138">
+          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/UserDashboard/NavBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="36" column="89" selection-start-line="36" selection-start-column="89" selection-end-line="36" selection-end-column="89" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

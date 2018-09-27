@@ -44,7 +44,7 @@ class Root extends Component {
         console.log(authUser);
         const authenticated = (
             <div>
-                <NavBar username="Shad" notifications={4} doSignOut={this.handleSignout}/>
+                <NavBar user={authUser} notifications={4} doSignOut={this.handleSignout}/>
                 <div>
                     {loaderShown ? <Spinner/> : <Body user={authUser}/>}
 

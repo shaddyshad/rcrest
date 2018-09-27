@@ -13,7 +13,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {auth} from "../../firebase";
 
 
-const Navigation = ({username, notifications, doSignOut}) => {
+const Navigation = ({user, notifications, doSignOut}) => {
     return (
         <Navbar staticTop>
             <Navbar.Header>
@@ -34,7 +34,7 @@ const Navigation = ({username, notifications, doSignOut}) => {
                     <NavItem eventKey={1} href="#">
                         <span><FontAwesomeIcon icon='cart-plus'/> Place Order</span>
                     </NavItem>
-                    <NavDropdown eventKey="4" title={`Hi ${username}`} id="nav-dropdown">
+                    <NavDropdown eventKey="4" title={user ? `Hi ${user.email}` : 'Profile'} id="nav-dropdown">
                         <MenuItem eventKey="4.1">Profile</MenuItem>
                         <MenuItem eventKey="4.2">Settins</MenuItem>
                         <MenuItem eventKey="4.3" onClick={doSignOut}>Logout</MenuItem>
