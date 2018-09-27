@@ -5,11 +5,21 @@ import {
     Grid,
     Row,
     Col,
+    Breadcrumb,
+    BreadcrumbItem
 } from 'react-bootstrap';
+
+import {withRouter, Switch, Route, Link} from 'react-router-dom';
 
 import SideBar from './SideBar';
 import Activity from './Activity';
 import Profile from "./Profile";
+import Item, {Item2} from "./Item";
+
+import Detail from './Detail';
+import Notifications from './Notifications';
+import Messages from './Messages';
+import Post from './Post';
 
 
 class Body extends Component {
@@ -20,52 +30,194 @@ class Body extends Component {
                 {id: 1, type: 'Computer Science', pages: 3, amount: 36.5, writer_id: "HSD827H123", status: 'Complete'}
             ],
             items: [
-                {id: 1, text: 'Profile'},
-                {id: 0, text: 'Activity'},
-                {id: 2, text: 'Settings'}
+                {id: 1, text: 'Revision', path: '/orders/revision'},
+                {id: 0, text: 'Disputes', path: '/orders/disputes'},
+                {id: 2, text: 'Notifications', path: '/notifications'},
+                {id: 3, text: 'Messages', path: '/messages'}
             ],
-            activeScreen: 0
+            dashboardItems: [
+                {id: 1, text: 'Detail', icon: 'server', path: '/orders/pending'},
+                {id: 2, text: 'In Notifications', icon: 'list-ul', path: '/orders/progress'},
+                {id: 3, text: 'Completed', icon: 'check-square', path: '/orders/completed'},
+                {id: 4, text: 'Approved', icon: 'money-bill', path: '/orders/approved'}
+            ],
+
+            breadcrumbs: []
         }
+    }
+
+    componentDidMount() {
+        const {history} = this.props;
+        const breadcrumbs = [...this.state.breadcrumbs, {href: history.location.pathname, text: 'Home'}];
+        this.setState({breadcrumbs});
     }
 
     renderMenu() {
         const {items} = this.state;
 
-        return items.map(({id, text}) => (
-            <Col xsHidden md={2} key={id}><p onClick={() => this.handleClick(id)}>{text}</p></Col>
+        return items.map(({id, text, path}) => (
+            <Col xsHidden md={3} key={id}><Item text={text} path={path} onClick={() => this.handleClick(path)}/></Col>
         ));
     }
 
-    handleClick = (id) => {
-        this.setState({activeScreen: id})
+    renderItems() {
+        const {dashboardItems} = this.state;
+
+        return dashboardItems.map(({id, text, icon, path}) => (
+            <Col xs={12} md={3} key={id}>
+                <Item text={text} icon={icon} path={path} onClick={() => this.handleClick(path)}/>
+            </Col>
+        ))
+    }
+
+    handleClick = (path) => {
+        const d = path.split('/');
+        const entry = d[d.length - 1];
+        let breadcrumbs = [...this.state.breadcrumbs];
+        if (breadcrumbs.length !== 1)
+            breadcrumbs.pop();
+        breadcrumbs = [...breadcrumbs, {href: path, text: entry}];
+        const {href} = this.state.breadcrumbs[0];
+        const {history} = this.props;
+        const p = `${history.location.pathname}${path}`;
+        history.push(p);
+        this.setState({breadcrumbs});
     };
 
-    getScreen(){
-        const screens = [<Activity orders={this.state.orders} user={this.props.user}/>, <Profile user={this.props.user}/>];
+    handleLinkClick = (path) => {
+        let breadcrumbs = [...this.state.breadcrumbs];
+        if (breadcrumbs.length !== 1)
+            breadcrumbs.pop();
+        breadcrumbs = [...breadcrumbs, {href: path, text: path}];
+        this.setState({breadcrumbs});
+    }
+
+    getScreen() {
+        const screens = [
+            <Activity orders={this.state.orders} user={this.props.user}/>,
+            <Profile user={this.props.user}/>
+        ];
         const {activeScreen} = this.state;
         return screens[activeScreen];
     }
 
+    renderBreadcrumbs() {
+        const {breadcrumbs} = this.state;
+        return breadcrumbs.map(({text, href}, idx) => (<BreadcrumbItem key={idx} href={href}>{text}</BreadcrumbItem>))
+    }
+
+    getHomePageLink() {
+        const {history} = this.props;
+        const path = `${history.location.pathname.split('/').slice(0, 3).join('/')}`;
+        console.log(path);
+        return path;
+
+    }
 
     render() {
-        const {user: {email}} = this.props;
+        const defaultScreen = (
+            <div>
+                {this.renderItems()}
+                {this.renderMenu()}
+            </div>
+        );
+
+        const Pend = (
+            <div>
+                <h3>Pending</h3>
+                <Detail title="Pending"/>
+            </div>
+        );
+
+        const Prog = (
+            <div>
+                <h3>In Progress</h3>
+                <Detail title="Progress"/>
+            </div>
+        );
+
+        const Complete = (
+            <div>
+                <h3>Complete</h3>
+                <Detail title="Completed"/>
+            </div>
+        );
+
+        const Approved = (
+            <div>
+                <h3>Approved</h3>
+                <Detail title="Approved"/>
+            </div>
+        );
+
+        const Revision = (
+            <div>
+                <h3>Revisions</h3>
+                <Detail title="Revisions"/>
+            </div>
+        );
+
+        const Disputes = (
+            <div>
+                <h3>Disputes</h3>
+                <Detail title="Disputed"/>
+            </div>
+        );
+
+        const Current = (
+            <div>
+                <h3>Current orders</h3>
+                <Detail title="Current"/>
+            </div>
+        );
+
+        const Archive = (
+            <div>
+                <h3>Archives</h3>
+                <Detail title="Archived"/>
+            </div>
+        )
+
+        const Accepted = (
+            <div>
+                <h3>Accepted Orders</h3>
+                <Detail title="Accepted"/>
+            </div>
+        )
+
+
+
+
         return (
             <div>
                 <Grid fluid>
                     <Row>
                         <Col xsHidden md={3}>
-                            <SideBar/>
+                            <SideBar home={this.getHomePageLink()} onClick={this.handleLinkClick}/>
                         </Col>
                         <Col xs={3} md={9}>
                             <Panel>
-                                <Panel.Heading>
-                                    <Row>
-                                        {this.renderMenu()}
-                                        <Col xsHidden md={2}>{email}</Col>
-                                    </Row>
-                                </Panel.Heading>
                                 <Panel.Body>
-                                    {this.getScreen()}
+                                    <h3>Clients Dashboard</h3>
+                                    <hr/>
+                                    <Breadcrumb>
+                                        {this.renderBreadcrumbs()}
+                                    </Breadcrumb>
+                                    <Switch>
+                                        <Route exact path='/account/:id/orders/pending' children={Pend}/>
+                                        <Route exact path='/account/:id' children={defaultScreen}/>
+                                        <Route exact path='/account/:id/orders/progress' children={Prog}/>
+                                        <Route exact path='/account/:id/orders/completed' children={Complete}/>
+                                        <Route exact path='/account/:id/orders/approved' children={Approved}/>
+                                        <Route exact path='/account/:id/orders/revision' children={Revision}/>
+                                        <Route exact path='/account/:id/orders/disputes' children={Disputes}/>
+                                        <Route exact path='/account/:id/orders/accepted' children={Accepted}/>
+                                        <Route exact path='/account/:id/orders/archives' children={Archive}/>
+                                        <Route exact path='/account/:id/orders/current' children={Current}/>
+                                        <Route exact path='/account/:id/notifications' component={Notifications}/>
+                                        <Route exact path='/account/:id/messages' component={Messages}/>
+                                        <Route exact path='/account/:id/orders/post' component={Post}/>
+                                    </Switch>
                                 </Panel.Body>
                             </Panel>
                         </Col>
@@ -76,4 +228,4 @@ class Body extends Component {
     }
 }
 
-export default Body
+export default withRouter(Body);
