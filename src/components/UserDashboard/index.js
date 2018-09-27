@@ -10,17 +10,19 @@ import withAuthorization from '../withAuthorization';
 import withAuthentication from '../withAuthentication';
 
 import {firebase} from "../../firebase";
+import Spinner from "../Landing/Loader";
 
 class Root extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            authUser: null
+            authUser: null,
+            loaderShown: false
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         firebase.auth.onAuthStateChanged(authUser => {
             authUser
                 ? this.setState({authUser})
@@ -29,23 +31,26 @@ class Root extends Component {
     }
 
     handleSignout = (event) => {
-        const {history} = this.props;
-        auth.doSignOut()
-            .then(function () {
-                history.push(LANDING)
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-        event.preventDefault();
-        console.log("Logged out");
+        this.setState({loaderShown: true}, () => {
+            setTimeout(() => {
+                auth.doSignOut();
+                this.setState({loaderShown: false})
+            }, 1000)
+        });
     };
 
     render() {
-        const {authUser} = this.state;
+        const {authUser, loaderShown} = this.state;
         console.log(authUser);
-        const authenticated = <div><NavBar username="Shad" notifications={4} doSignOut={this.handleSignout}/><Body user={authUser}/></div>;
+        const authenticated = (
+            <div>
+                <NavBar username="Shad" notifications={4} doSignOut={this.handleSignout}/>
+                <div>
+                    {loaderShown ? <Spinner/> : <Body user={authUser}/>}
+
+                </div>
+            </div>
+        );
         const notAuth = <div><h4>404 Not Found</h4></div>;
         const component = authUser ? authenticated : notAuth;
         return (
