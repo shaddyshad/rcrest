@@ -8,6 +8,10 @@ import {
     Panel
 } from "react-bootstrap";
 
+import {connect} from 'react-redux';
+
+import {setOrdersPath} from '../../Actions';
+
 class PriceCalculator extends Component {
 
     constructor(props) {
@@ -39,7 +43,7 @@ class PriceCalculator extends Component {
 
 
     render() {
-        const {onClick} = this.props;
+        const {setOrders} = this.props;
 
         return (
             <div style={styles.form}>
@@ -112,7 +116,7 @@ class PriceCalculator extends Component {
 
                             <HelpBlock><h3>Standard Cost: ${this.calculate()}</h3></HelpBlock>
 
-                            <Button type="submit" onClick={onClick}>Continue</Button>
+                            <Button type="submit" onClick={() => setOrders('/orders')}>Continue</Button>
 
                         </Form>
                     </Panel.Body>
@@ -133,4 +137,10 @@ const styles = {
     }
 };
 
-export default PriceCalculator;
+const mapDispatchToProps = dispatch =>{
+    return{
+        setOrders: path => dispatch(setOrdersPath(path))
+    }
+};
+
+export default connect(null, mapDispatchToProps)(PriceCalculator);

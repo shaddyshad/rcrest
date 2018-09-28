@@ -10,16 +10,27 @@ import {
 } from 'react-bootstrap';
 
 import {Link, withRouter} from 'react-router-dom';
-import {auth} from '../../firebase';
-import * as routes from '../../Constants/routes';
 import Spinner from "../Landing/Loader";
+import {connect} from 'react-redux';
+import {signInUser} from '../../Actions';
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: (email, password) => dispatch(signInUser(email, password))
+    }
+};
+
+const mapStateToProps = state => {
+    return {
+        error: state.user.error
+    }
+}
 
 const INITIAL_STATE = {
     email: '',
     password: '',
-    error: null,
     loaderShown: false
-}
+};
 
 class LoginForm extends Component {
     constructor(props) {
@@ -38,29 +49,31 @@ class LoginForm extends Component {
 
     handleSubmit = (event) => {
         const {email, password} = this.state;
-
-        const {history} = this.props;
-        this.setState({loaderShown: true}, () => {
-            setTimeout(() => {
-                auth.doSignInWithEmailAndPassword(email, password)
-                    .then((user) => {
-                        this.setState({...INITIAL_STATE, loaderShown: false});
-                        const {uid} = user.user;
-                        let path = uid.substr(0, 10);
-                        path = `/account/${path}`;
-                        history.push(path);
-                    })
-                    .catch(error => {
-                        this.setState({error, loaderShown: false});
-                    });
-            })
-        })
+        // const {history} = this.props;
+        // this.setState({loaderShown: true}, () => {
+        //     setTimeout(() => {
+        //         auth.doSignInWithEmailAndPassword(email, password)
+        //             .then((user) => {
+        //                 this.setState({...INITIAL_STATE, loaderShown: false});
+        //                 const {uid} = user.user;
+        //                 let path = uid.substr(0, 10);
+        //                 path = `/account/${path}`;
+        //                 history.push(path);
+        //             })
+        //             .catch(error => {
+        //                 this.setState({error, loaderShown: false});
+        //             });
+        //     })
+        // });
+        this.props.onLogin(email, password);
+        this.setState({...INITIAL_STATE});
 
         event.preventDefault();
     };
 
     render() {
-        const {email, password, error, loaderShown} = this.state;
+        const {email, password, loaderShown} = this.state;
+        const {error} = this.props;
 
         const isInvalid =
             password === '' ||
@@ -70,7 +83,7 @@ class LoginForm extends Component {
                 {loaderShown ? <Spinner/> : <div>
                     <Panel style={styles.form}>
                         <Panel.Body>
-                            <Form onSubmit={this.handleSubmit}>
+                            <Form>
                                 <FormGroup
                                     controlId="basic-email"
                                 >
@@ -93,7 +106,7 @@ class LoginForm extends Component {
                                         onChange={this.handlePasswordChange}
                                     />
                                 </FormGroup>
-                                <Button type="submit" disabled={isInvalid}>Login</Button>
+                                <Button disabled={isInvalid} onClick={this.handleSubmit}>Login</Button>
                                 <HelpBlock><Link to='/reset'>Forgot password?</Link></HelpBlock>
                             </Form>
                         </Panel.Body>
@@ -119,6 +132,6 @@ const styles = {
         color: 'rgb(214, 239, 255)',
         fontSize: 18
     }
-}
+};
 
-export default withRouter(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginForm));

@@ -10,8 +10,6 @@ import {
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import {auth} from "../../firebase";
-
 
 const Navigation = ({user, notifications, doSignOut}) => {
     return (

@@ -10,8 +10,25 @@ import {
 } from 'react-bootstrap';
 
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {changeActiveForm, changePaperCalculationsProperty} from '../../../Actions';
+import {PAGES, SPACING, TYPE, DEADLINE, ACADEMIC_LEVEL} from "../../../Constants/fieldNames";
 
-class Form1 extends Component {
+
+const mapStateToProps = state => {
+    return {
+        order: state.currentOrder.paperCalculations
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changePage: idx => dispatch(changeActiveForm(idx)),
+        changeProp: (key, value) => dispatch(changePaperCalculationsProperty(key, value))
+    }
+};
+
+class Form3 extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -50,15 +67,17 @@ class Form1 extends Component {
     }
 
     render() {
-        const {pages, onPageChange, onSubmit, onLevelChange, onSpacingChange,onDeadlineChange, onTypeChange, amount} = this.props;
+        const {order, onSubmit, changePage, changeProp} = this.props;
+
+        const isChecked = (key, val) => key === val;
 
         return (
-            <Form>
+            <Form onSubmit={onSubmit}>
 
-                <FormGroup onChange={onLevelChange}>
+                <FormGroup onChange={(event) => changeProp(ACADEMIC_LEVEL, event.target.value)}>
                     <ControlLabel>Academic Level</ControlLabel>
                     <Checkbox inline value="HIGH_SCHOOL">High School</Checkbox>
-                    <Checkbox inline value="UNDERGRADUATE">Undergraduate</Checkbox>{' '}
+                    <Checkbox inline value="UNDERGRADUATE" checked>Undergraduate</Checkbox>{' '}
                     <Checkbox inline value="MASTERS">Master</Checkbox>
                     <Checkbox inline value="DOCTORAL">Doctoral</Checkbox>
                 </FormGroup>
@@ -67,12 +86,12 @@ class Form1 extends Component {
                     <ControlLabel>Pages</ControlLabel>
                     <FormControl
                         type="text"
-                        value={pages}
-                        onChange={onPageChange}
+                        value={order.pages}
+                        onChange={(event) => changeProp(PAGES, event.target.value)}
                     />
                 </FormGroup>
 
-                <FormGroup onChange={onSpacingChange}>
+                <FormGroup onChange={(event) => changeProp(SPACING, event.target.value)}>
                     <ControlLabel>Spacing</ControlLabel>
                     <Radio name="radioGroup" value="SINGLE" inline>
                         Single
@@ -85,31 +104,29 @@ class Form1 extends Component {
                     <ControlLabel>Deadline</ControlLabel>
                     <FormControl
                         componentClass="select"
-                        defaultValue="History"
-                        onChange={onDeadlineChange}
+                        defaultValue="14_DAYS"
+                        onChange={(event) => changeProp(DEADLINE, event.target.value)}
                     >
                         {this.renderDeadline()}
                     </FormControl>
                 </FormGroup>
                 <FormGroup controlId="basic-paper">
-                    <ControlLabel>Deadline</ControlLabel>
+                    <ControlLabel>Type</ControlLabel>
                     <FormControl
                         componentClass="select"
                         defaultValue="Article"
-                        onChange={onTypeChange}
+                        onChange={(event) => changeProp(TYPE, event.target.value)}
                     >
                         {this.renderTypes()}
                     </FormControl>
                 </FormGroup>
 
 
-
-                <HelpBlock>Amount: {amount}</HelpBlock>
-                {this.props.hideButton ? null : <Link to='/orders/3'><Button>Next</Button></Link>}
+                {this.props.hideButton ? null : <Button onClick={() => changePage(3)}>Next</Button>}
 
             </Form>
         );
     }
 }
 
-export default Form1
+export default connect(mapStateToProps, mapDispatchToProps)(Form3);

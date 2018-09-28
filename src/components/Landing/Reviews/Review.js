@@ -21,6 +21,7 @@ class Review extends Component{
                         <StarRatingComponent
                             starCount={5}
                             value={stars}
+                            name="rating"
                         />
                     </section>
 

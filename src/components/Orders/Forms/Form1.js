@@ -7,10 +7,36 @@ import {
     Button,
     Radio
 } from 'react-bootstrap';
-
 import {
     Link
 } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {
+    DISCIPLINE,
+    TOPIC,
+    FORMAT,
+    SOURCES
+} from '../../../Constants/fieldNames';
+import {
+    changePaperDetailsProperty,
+    changeActiveForm
+} from '../../../Actions';
+
+const mapStateToProps = (state) => {
+    return{
+        order: state.currentOrder.paperDetails
+    }
+};
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changeProp: (key, value) => dispatch(changePaperDetailsProperty(key, value)),
+        changePage: idx => dispatch(changeActiveForm(idx))
+    }
+};
+
+
 
 class Form1 extends Component{
 
@@ -105,10 +131,9 @@ class Form1 extends Component{
         )
     }
 
-
-
     render(){
-        const {topic, sources, onTypeChange, onSourcesChange, onFormatChange, onTopicsChange} = this.props;
+        const {order, changeProp, changePage} = this.props;
+        const {discipline, topic, sources} = order;
 
         const isInvalid = topic === '' || sources === '';
         return (
@@ -117,8 +142,8 @@ class Form1 extends Component{
                     <ControlLabel>Paper Subject</ControlLabel>
                     <FormControl
                         componentClass="select"
-                        defaultValue={this.state.defaultValue}
-                        onChange={onTypeChange}
+                        defaultValue={discipline}
+                        onChange={(event) => changeProp(DISCIPLINE, event.target.value)}
                     >
                         {this.renderTypes()}
                     </FormControl>
@@ -131,7 +156,7 @@ class Form1 extends Component{
                         type="text"
                         value={topic}
                         placeholder="Writers Choice"
-                        onChange={onTopicsChange}
+                        onChange={(event) => changeProp(TOPIC, event.target.value)}
                     />
                 </FormGroup>
 
@@ -143,10 +168,10 @@ class Form1 extends Component{
                         type="text"
                         value={sources}
                         placeholder="0"
-                        onChange={onSourcesChange}
+                        onChange={(event) => changeProp(SOURCES, event.target.value)}
                     />
                 </FormGroup>
-                <FormGroup onChange={onFormatChange}>
+                <FormGroup onChange={(event) => changeProp(FORMAT, event.target.value)}>
                     <Radio name="radioGroup"
                            value="MLA"
                            inline
@@ -176,11 +201,11 @@ class Form1 extends Component{
                     </Radio>
                 </FormGroup>
 
-                {this.props.hideButton ? null :<Link to='/orders/1'><Button disabled={isInvalid}>Next</Button></Link>}
+                {this.props.hideButton ? null :<Button disabled={isInvalid} onClick={() => changePage(1)}>Next</Button>}
 
             </Form>
         );
     }
 }
 
-export default Form1
+export default connect(mapStateToProps, mapDispatchToProps)(Form1);

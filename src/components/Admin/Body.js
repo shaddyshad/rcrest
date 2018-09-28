@@ -8,7 +8,6 @@ import {
 
 import Sidebar from "../Orders/Sidebar";
 import MenuPanel from './MenuPanel';
-import PostedOrder from './PostedOrder';
 
 class Body extends Component {
 

@@ -8,9 +8,29 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 
-import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {
+    changeActiveForm,
+    changePaperInstructionsProperty
+} from "../../../Actions";
 
-class Form1 extends Component{
+import {INSTRUCTIONS} from '../../../Constants/fieldNames';
+
+
+const mapStateToProps = state => {
+    return {
+        order: state.currentOrder.paperInstructions
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changePage: idx => dispatch(changeActiveForm(idx)),
+        changeProp: (key, value) => dispatch(changePaperInstructionsProperty(key, value))
+    }
+};
+
+class Form2 extends Component{
 
     constructor(props){
         super(props);
@@ -21,7 +41,8 @@ class Form1 extends Component{
 
 
     render(){
-        const {instructions, onFieldChange, onSubmit} = this.props;
+        const {order, changeProp, changePage} = this.props;
+        const {instructions} = order;
 
         const isInvalid = instructions === '';
         return (
@@ -33,7 +54,7 @@ class Form1 extends Component{
                             componentClass="textarea"
                             placeholder="Order Instructions"
                             value={instructions}
-                            onChange={onFieldChange}
+                            onChange={(event) => changeProp(INSTRUCTIONS, event.target.value)}
 
                         />
                     </FormGroup>
@@ -41,11 +62,11 @@ class Form1 extends Component{
                     <HelpBlock>You will be able to upload files after order submission</HelpBlock>
                 </FormGroup>
 
-                {this.props.hideButton ? null : <Link to="/orders/2"><Button>Next</Button></Link>}
+                {this.props.hideButton ? null :<Button disabled={isInvalid} onClick={() => changePage(2)}> Next</Button>}
 
             </Form>
         );
     }
 }
 
-export default Form1
+export default connect(mapStateToProps, mapDispatchToProps)(Form2);

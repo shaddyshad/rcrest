@@ -39,19 +39,24 @@ import {
     faStopwatch,
     faSpinner,
     faRandom
-} from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons';
+
+import {Provider} from 'react-redux';
+
+import store from './store';
 
 library.add(
     faShieldAlt, faGem, faBriefcase, faUser, faEnvelopeOpenText, faDollarSign, faFile, fab,
     faGraduationCap, faEdit, faCertificate, faComment, faFutbol, faBullhorn, faQuestionCircle,
-    faCheckCircle, faMapMarkerAlt, faHistory, faClock, faServer, faCartPlus, faCheckSquare, faListUl,faBell,
-    faMoneyBill, faArrowCircleRight, faTachometerAlt, faPlusCircle, faStopwatch,faSpinner, faRandom
-
+    faCheckCircle, faMapMarkerAlt, faHistory, faClock, faServer, faCartPlus, faCheckSquare, faListUl, faBell,
+    faMoneyBill, faArrowCircleRight, faTachometerAlt, faPlusCircle, faStopwatch, faSpinner, faRandom
 );
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('root'));
 registerServiceWorker();

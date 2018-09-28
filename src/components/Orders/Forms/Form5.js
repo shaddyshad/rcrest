@@ -5,7 +5,6 @@ import {
     ListGroup, Row, Col, Button, Panel,
 } from 'react-bootstrap';
 
-import {Link} from 'react-router-dom';
 
 import LoginForm from '../../Common/LoginForm';
 import RegisterForm from '../../Common/RegisterForm';
@@ -30,7 +29,7 @@ class Form1 extends Component {
     };
 
     render() {
-        const {writer_id, discount_code, amount, onIdChange, onCodeChange, onRadioChange, isAuthenticated} = this.props;
+        const {amount, isAuthenticated} = this.props;
         const Register =
             <div>
                 <HelpBlock>Enter the form to create an account</HelpBlock>

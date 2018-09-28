@@ -9,17 +9,19 @@ import {
     BreadcrumbItem
 } from 'react-bootstrap';
 
-import {withRouter, Switch, Route, Link} from 'react-router-dom';
+import {withRouter, Switch, Route} from 'react-router-dom';
 
 import SideBar from './SideBar';
 import Activity from './Activity';
 import Profile from "./Profile";
-import Item, {Item2} from "./Item";
+import Item from "./Item";
 
 import Detail from './Detail';
 import Notifications from './Notifications';
 import Messages from './Messages';
 import Post from './Post';
+
+import {connect} from 'react-redux';
 
 
 class Body extends Component {
@@ -36,7 +38,7 @@ class Body extends Component {
                 {id: 3, text: 'Messages', path: '/messages'}
             ],
             dashboardItems: [
-                {id: 1, text: 'Detail', icon: 'server', path: '/orders/pending'},
+                {id: 1, text: 'Pending', icon: 'server', path: '/orders/pending'},
                 {id: 2, text: 'In Notifications', icon: 'list-ul', path: '/orders/progress'},
                 {id: 3, text: 'Completed', icon: 'check-square', path: '/orders/completed'},
                 {id: 4, text: 'Approved', icon: 'money-bill', path: '/orders/approved'}
@@ -71,16 +73,16 @@ class Body extends Component {
     }
 
     handleClick = (path) => {
-        const d = path.split('/');
+        const d = path.split('');
         const entry = d[d.length - 1];
         let breadcrumbs = [...this.state.breadcrumbs];
-        if (breadcrumbs.length !== 1)
+        while(breadcrumbs.length > 1)
             breadcrumbs.pop();
         breadcrumbs = [...breadcrumbs, {href: path, text: entry}];
-        const {href} = this.state.breadcrumbs[0];
         const {history} = this.props;
-        const p = `${history.location.pathname}${path}`;
-        history.push(p);
+        const {homepage} = this.props;
+        const e = `${homepage}${path}`;
+        history.push(e);
         this.setState({breadcrumbs});
     };
 
@@ -90,7 +92,7 @@ class Body extends Component {
             breadcrumbs.pop();
         breadcrumbs = [...breadcrumbs, {href: path, text: path}];
         this.setState({breadcrumbs});
-    }
+    };
 
     getScreen() {
         const screens = [
@@ -114,6 +116,7 @@ class Body extends Component {
 
     }
 
+
     render() {
         const defaultScreen = (
             <div>
@@ -125,7 +128,7 @@ class Body extends Component {
         const Pend = (
             <div>
                 <h3>Pending</h3>
-                <Detail title="Pending"/>
+                <Detail title="Pending" orders={this.props.pending}/>
             </div>
         );
 
@@ -176,14 +179,14 @@ class Body extends Component {
                 <h3>Archives</h3>
                 <Detail title="Archived"/>
             </div>
-        )
+        );
 
         const Accepted = (
             <div>
                 <h3>Accepted Orders</h3>
                 <Detail title="Accepted"/>
             </div>
-        )
+        );
 
 
 
@@ -228,4 +231,14 @@ class Body extends Component {
     }
 }
 
-export default withRouter(Body);
+const mapStateToProps = (state) => {
+    //pending
+    return ({
+        pending: state.orders.filter(order => order.category === 'pending'),
+        homepage: state.path
+    })
+
+};
+
+
+export default connect(mapStateToProps)(withRouter(Body));

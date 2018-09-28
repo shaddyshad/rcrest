@@ -6,14 +6,8 @@ import {
 } from 'react-bootstrap';
 
 class Detail extends Component {
-    constructor(pending) {
-        super(pending);
-        this.state = {
-            pending: []
-        }
-    }
-
     render() {
+        const len = this.props.orders.length;
         return (
             <div>
                 <Table striped bordered condensed hover>
@@ -31,7 +25,7 @@ class Detail extends Component {
                     </thead>
                     <tbody>
                     {
-                        this.state.pending.length > 0 ?
+                        len > 0 ?
                             this.state.pending.map(el => (
                                 <tr>
                                     <td>{el.order_id}</td>
@@ -47,7 +41,8 @@ class Detail extends Component {
                     }
                     </tbody>
                 </Table>
-                <HelpBlock>You have no {this.props.title} orders</HelpBlock>
+                {len === 0 ? <HelpBlock>You have no {this.props.title} orders</HelpBlock>: null}
+
             </div>
 
         );

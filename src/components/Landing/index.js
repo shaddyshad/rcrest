@@ -16,6 +16,10 @@ import Spinner from './Loader';
 
 import {withRouter} from 'react-router-dom';
 
+import {connect} from 'react-redux';
+
+
+
 class Landing extends Component {
     constructor(props) {
         super(props);
@@ -27,16 +31,20 @@ class Landing extends Component {
     handleLoginClick = (event) => {
         const {history} = this.props;
         if (history.location.pathname === '/login')
-            history.push('/login');
+            return;
         else
             this.setState(
                 {loaderShown: true}, () => {
                     setTimeout(() => {
-                        history.push('/login');
+                        const {homepage} = this.props;
+                        const path = `${homepage}login`;
+                        console.log(path);
+                        history.push(path);
                         this.setState({loaderShown: false});
                     }, 1000)
                 }
-            )
+            );
+
     };
 
     render() {
@@ -68,6 +76,13 @@ const styles = {
         backgroundSize: 'cover',
         fontFamily: "'Montserrat', sans-serif !important"
     }
-}
+};
 
-export default withRouter(Landing);
+
+const mapStateToProps = state => {
+    return {
+        homepage: state.path
+    }
+};
+
+export default connect(mapStateToProps)(withRouter(Landing));
