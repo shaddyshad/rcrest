@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {BrowserRouter} from 'react-router-dom';
-
+import {ConnectedRouter} from 'connected-react-router';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {
@@ -43,7 +42,7 @@ import {
 
 import {Provider} from 'react-redux';
 
-import store from './store';
+import store, {history} from './store';
 
 library.add(
     faShieldAlt, faGem, faBriefcase, faUser, faEnvelopeOpenText, faDollarSign, faFile, fab,
@@ -54,9 +53,9 @@ library.add(
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
             <App/>
-        </BrowserRouter>
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();

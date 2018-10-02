@@ -1,6 +1,7 @@
 //Firebase
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 //Production configuration
 var prodConfig = {
@@ -29,7 +30,10 @@ if(!firebase.apps.length){
 }
 
 const auth = firebase.auth();
+const database = firebase.database().ref();
+const ordersRef = database.child('orders');
 
 export {
-    auth
+    auth,
+    database,
 };

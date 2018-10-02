@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import AuthUserContext from './AuthUserContext';
 import { firebase } from '../firebase';
-import * as routes from '../Constants/routes';
+import * as routes from '../constants/routes';
 
 const withAuthorization = (authCondition) => (Component) => {
     class WithAuthorization extends React.Component {
