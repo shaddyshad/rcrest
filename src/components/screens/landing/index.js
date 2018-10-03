@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 //components
-import NavBar from '../../shared/NavBar';
+import NavBar from '../../shared/navbar';
 import Banner from './banner/Banner';
 import Values from './values/Values';
 import ProcessList from './ProcessList';
@@ -23,7 +23,7 @@ class Landing extends Component {
                 <div>
                     <div style={styles.banner}>
                         <NavBar onLogin={this.handleLoginClick} showLogin={true}/>
-                        <Banner/>
+                        <Banner form={this.props.form}/>
                         <Values/>
                     </div>
                     <ProcessList/>

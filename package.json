@@ -10,11 +10,13 @@
     "circular-array": "^0.1.1",
     "connected-react-router": "^4.5.0",
     "firebase": "^5.5.1",
+    "firebaseui": "^3.4.1",
     "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
+    "react-firebaseui": "^3.0.7",
     "react-loader-spinner": "^2.0.6",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
@@ -32,7 +34,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "firebase deploy"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"

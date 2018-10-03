@@ -10,7 +10,7 @@ const changePage = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         case CHANGE_ACTIVE_FORM:
             const idx = action.payload;
-            return {...state, activeIdx: parseInt(idx)};
+            return {...state, activeIdx: parseInt(idx, 10)};
         default:
             return state;
 

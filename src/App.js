@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Screen from "./components/screens";
-import Loader from "./components/shared/Loader";
+import Loader from "./components/shared/loader";
 
 class App extends Component {
     render() {

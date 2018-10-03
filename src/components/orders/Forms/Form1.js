@@ -7,9 +7,6 @@ import {
     Button,
     Radio
 } from 'react-bootstrap';
-import {
-    Link
-} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {
     DISCIPLINE,
@@ -18,21 +15,23 @@ import {
     SOURCES
 } from '../../../constants/fieldNames';
 import {
-    changePaperDetailsProperty,
     changeActiveForm
-} from '../../../actions';
+} from '../../../actions/index';
+import {editAndSave} from "../../../actions/currentOrder/request";
+import {postOrder} from "../../../actions/currentOrder/information";
 
 const mapStateToProps = (state) => {
     return{
-        order: state.currentOrder.paperDetails
+        order: state.currentOrder.request
     }
 };
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeProp: (key, value) => dispatch(changePaperDetailsProperty(key, value)),
-        changePage: idx => dispatch(changeActiveForm(idx))
+        changeProp: (key, value) => dispatch(editAndSave(key, value)),
+        changePage: idx => dispatch(changeActiveForm(idx)),
+        postOrder: () => dispatch(postOrder())
     }
 };
 

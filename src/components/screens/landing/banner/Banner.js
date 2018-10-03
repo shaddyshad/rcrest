@@ -2,18 +2,10 @@ import React, {Component} from 'react';
 import {Col, Grid, Row} from 'react-bootstrap';
 //components
 import BannerText from './BannerText';
-import PriceCalculator from '../../../shared/PriceCalculator';
-import LoginForm from '../../../shared/LoginForm';
-import RegisterForm from '../../../shared/RegisterForm';
-import Loader from '../../../shared/Loader';
+import PriceCalculator from '../../../shared/priceCalculator';
+import LoginForm from '../../../shared/signIn';
+import Loader from '../../../shared/loader';
 import {connect} from "react-redux";
-
-/*
-* routes
-* / - pricecalculator
-* /loging - Login Form
-* /register - Register form
-* */
 
 
 class Banner extends Component {
@@ -65,13 +57,10 @@ class Banner extends Component {
     // };
 
     getScreen(){
-        const {pathname} = this.props;
-        switch (pathname) {
-            case "/login":
+        const {form} = this.props;
+        switch (form) {
+            case "signin":
                 return <LoginForm/>;
-            case "/register":
-                return <RegisterForm control={true}/>;
-            case "/":
             default:
                 return <PriceCalculator/>;
         }
@@ -91,7 +80,6 @@ class Banner extends Component {
                     /> :
                     <Grid>
                         <Row className="show-grid">
-                            {/*Banner content*/}
                             <Col xs={12} md={8}>
                                 <h4 style={styles.head}>Relax We Write Your Research Papers and Essays!</h4>
                                 {this.state.typing ?

@@ -22,14 +22,16 @@
 * }`
 *
 * * */
-import {combineReducers} from 'redux';
+import {INIT_TRANSACTIONS} from "../../constants/currentOrder/transactions";
 
-const invoiceReducer = (state={}, action) => {
-    return state;
+
+const transactionsReducer = (state=[], action) => {
+    switch (action.type) {
+        case INIT_TRANSACTIONS:
+            return state;
+        default:
+            return state;
+    }
 };
 
-const transactionsReducer = (state={}, action) => {
-    return state;
-};
-
-export default combineReducers({invoice: invoiceReducer, transactions: transactionsReducer});
+export default transactionsReducer;

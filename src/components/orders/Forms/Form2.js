@@ -11,22 +11,22 @@ import {
 import {connect} from 'react-redux';
 import {
     changeActiveForm,
-    changePaperInstructionsProperty
-} from "../../../actions";
+} from "../../../actions/index";
 
 import {INSTRUCTIONS} from '../../../constants/fieldNames';
+import {editProperty} from "../../../actions/currentOrder/request";
 
 
 const mapStateToProps = state => {
     return {
-        order: state.currentOrder.paperInstructions
+        order: state.currentOrder
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         changePage: idx => dispatch(changeActiveForm(idx)),
-        changeProp: (key, value) => dispatch(changePaperInstructionsProperty(key, value))
+        changeProp: (key, value) => dispatch(editProperty(key, value))
     }
 };
 

@@ -15,11 +15,57 @@
 *       state: String,
 *       createdAt: DateTime,
 *       lastUpdated: DateTime,
-*       amount: Float
+*       amount: Float,
+*       orderID
 *  }
 *
 * */
 
-const infomationReducer = (state={}, action) => {
-    return state;
-}
+import {
+    APPROVE_ORDER,
+    CLASS_APPROVED,
+    CLASS_PENDING,
+    INIT_INFORMATION,
+    STATE_NULL,
+    STATE_OPENED,
+    UPDATE_ORDER,
+    SET_ORDER_ID, TRANSIT_ORDER_STATE
+} from "../../constants/currentOrder/information";
+
+//Initial state
+const INITIAL_INFORMATION_STATE = {
+    class: CLASS_PENDING,
+    state: STATE_OPENED,
+    createdAt: Date.now(),
+    lastUpdated: Date.now(),
+    orderID: null
+};
+
+const informationReducer = (state, action) => {
+    switch (action.type) {
+        case INIT_INFORMATION:
+            //Initialize the information state
+            return {...state, state: STATE_OPENED, class: CLASS_PENDING};
+
+        case UPDATE_ORDER:
+            //Set order and other to real state
+            return {...state, lastUpdated: Date.now()};
+
+        case APPROVE_ORDER:
+            //Posted when paid or by admin
+            return {...state, class: CLASS_APPROVED};
+
+        case SET_ORDER_ID:
+            //Set the order id
+            return {...state, orderID: action.payload};
+
+        case TRANSIT_ORDER_STATE:
+            //Transition the order state
+            return {...state, state: action.payload};
+
+        default:
+            return {...INITIAL_INFORMATION_STATE};
+    }
+};
+
+export default informationReducer;

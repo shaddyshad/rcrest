@@ -3,12 +3,10 @@ import React, {Component} from 'react';
 import NavBar from './NavBar';
 import Body from './Body';
 
-import {auth} from '../../firebase';
-
 import {firebase} from "../../firebase";
-import Spinner from "../shared/Loader";
 import {connect} from "react-redux";
-import {signOutUser} from "../../actions";
+import {authChanged} from "../../actions/authUser";
+import {Redirect} from 'react-router-dom';
 
 class Root extends Component {
 
@@ -21,36 +19,29 @@ class Root extends Component {
     }
 
     componentDidMount() {
+        const {authChanged} = this.props;
         firebase.auth.onAuthStateChanged(authUser => {
             authUser
-                ? this.setState({authUser})
-                : this.setState({authUser: null});
+                ? authChanged(authUser)
+                : authChanged(null);
         });
     }
 
-    handleSignout = (event) => {
-        this.setState({loaderShown: true}, () => {
-            setTimeout(() => {
-                auth.doSignOut();
-                this.setState({loaderShown: false})
-            }, 1000)
-        });
-    };
+
 
     render() {
         const {user} = this.props;
         const authenticated = (
             <div>
-                <NavBar user={user.user ? user.user.user : ''} notifications={0} doSignOut={() => signOutUser()}/>
+                <NavBar user={user ? user : ''} notifications={0}/>
                 <div>
-                    {/*{user.isLoading ? <Spinner/> : <Body/>}*/}
                     <Body/>
 
                 </div>
             </div>
         );
-        const notAuth = <div><h4>404 Not Found</h4></div>;
-        const component = user.user ? authenticated : notAuth;
+        const notAuth = <Redirect to='/signin' from='/home'/>;
+        const component = this.props.user ? authenticated : notAuth;
         return (
             component
         );
@@ -59,14 +50,15 @@ class Root extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.authUser
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        doSignOut: dispatch(signOutUser())
+        authChanged: authUser => dispatch(authChanged(authUser))
     }
 };
 
-export default connect(mapStateToProps)(Root);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

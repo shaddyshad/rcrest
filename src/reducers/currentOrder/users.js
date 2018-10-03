@@ -21,13 +21,27 @@
 *
 * */
 import {combineReducers} from 'redux';
+import {INIT_USERS_STUDENT, INIT_USERS_WRITER} from "../../constants/currentOrder/users";
 
 const writer = (state = {}, action) => {
-    return state;
+    switch (action.type) {
+        case INIT_USERS_WRITER:
+            //Initialize the writer,
+            return {...action.payload};
+
+        default:
+            return state;
+    }
 };
 
 const student = (state = {}, action) => {
-    return state;
+    switch (action.type) {
+        case INIT_USERS_STUDENT:
+            //Initialize the student, whether authenticated or not
+            return {...action.payload};
+        default:
+            return state;
+    }
 };
 
 

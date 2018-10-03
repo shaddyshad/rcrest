@@ -6,25 +6,25 @@ import {
     FormControl,
     ControlLabel,
     Button,
-    HelpBlock, Checkbox, Radio
+    Checkbox, Radio
 } from 'react-bootstrap';
 
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {changeActiveForm, changePaperCalculationsProperty} from '../../../actions';
+import {changeActiveForm,} from '../../../actions/index';
 import {PAGES, SPACING, TYPE, DEADLINE, ACADEMIC_LEVEL} from "../../../constants/fieldNames";
+import {editProperty} from "../../../actions/currentOrder/request";
 
 
 const mapStateToProps = state => {
     return {
-        order: state.currentOrder.paperCalculations
+        order: state.currentOrder
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         changePage: idx => dispatch(changeActiveForm(idx)),
-        changeProp: (key, value) => dispatch(changePaperCalculationsProperty(key, value))
+        changeProp: (key, value) => dispatch(editProperty(key, value))
     }
 };
 
@@ -66,10 +66,20 @@ class Form3 extends Component {
         return types.map(({amount, text, value}) => <option value={value} key={amount}>{text}</option>)
     }
 
+    // setDeadline = (key, value) => {
+    //     switch (value) {
+    //         case "14_DAY":
+    //             const deadline = Date.now();
+    //             return;
+    //         default:
+    //             const d = Date.now();
+    //     }
+    // };
+
     render() {
         const {order, onSubmit, changePage, changeProp} = this.props;
 
-        const isChecked = (key, val) => key === val;
+        // const isChecked = (key, val) => key === val;
 
         return (
             <Form onSubmit={onSubmit}>

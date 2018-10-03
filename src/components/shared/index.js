@@ -1,3 +1,3 @@
 module.exports = {
-    NavBar: require('./NavBar')
+    NavBar: require('./navbar')
 };

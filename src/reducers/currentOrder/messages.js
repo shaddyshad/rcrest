@@ -18,14 +18,17 @@
 *
 * */
 
-import {combineReducers} from 'redux';
+import {INIT_MESSAGES} from "../../constants/currentOrder/messages";
 
-const chatsReducer = (state={}, action) => {
-    return state;
+const chatsReducer = (state=[], action) => {
+    switch (action.type) {
+        case INIT_MESSAGES:
+            return state;
+        default:
+            return state;
+    }
+
 };
 
-const systemMessagesReducer = (state={}, action) => {
-    return state;
-};
 
-export default combineReducers({chats: chatsReducer, systemMessages: systemMessagesReducer})
+export default chatsReducer;

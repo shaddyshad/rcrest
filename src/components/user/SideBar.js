@@ -4,25 +4,23 @@ import {
     ListGroupItem,
     ListGroup,
     Panel,
-    Button
-} from 'react-bootstrap';
+    } from 'react-bootstrap';
 
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {connect} from "react-redux";
 
-const SideBar = ({pathname}) => {
-    const postOrder = `${pathname}/orders/post`;
-    const currPath = `${pathname}/orders/current`;
-    const pendPath = `${pathname}/orders/pending`;
-    const progPath = `${pathname}/orders/progress`;
-    const completePath = `${pathname}/orders/completed`;
-    const revPath = `${pathname}/orders/revision`;
-    const disPath = `${pathname}/orders/disputes`;
-    const messagePath = `${pathname}/messages`;
-    const notifPath = `${pathname}/notifications`;
-    const archPath = `${pathname}/orders/archives`;
-    const acceptPath = `${pathname}/orders/accepted`;
+const SideBar = () => {
+    const postOrder = `post-order`;
+    const currPath = `/orders/current`;
+    const pendPath = `/orders/pending`;
+    const progPath = `/orders/progress`;
+    const completePath = `/orders/completed`;
+    const revPath = `/orders/revision`;
+    const disPath = `/orders/disputes`;
+    const messagePath = `$messages`;
+    const notifPath = `/notifications`;
+    const archPath = `/orders/archives`;
+    const acceptPath = `/orders/accepted`;
 
 
     return(
@@ -54,10 +52,5 @@ const SideBar = ({pathname}) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        pathname: state.path.accountsPath
-    }
-};
 
-export default connect(mapStateToProps)(SideBar);
+export default SideBar;

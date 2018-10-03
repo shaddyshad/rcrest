@@ -9,12 +9,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {connect} from "react-redux";
 
-const Item = ({text, icon, path, onClick}) => {
+const Item = ({text, icon, onClick, count}) => {
     return(
         <Panel>
             <Panel.Body>
                 <FontAwesomeIcon icon={icon}/>
-                <h2>0</h2>
+                <h2>{count ? count : 0}</h2>
                 <HelpBlock>{text}</HelpBlock>
             </Panel.Body>
             <Panel.Footer>
@@ -22,17 +22,6 @@ const Item = ({text, icon, path, onClick}) => {
             </Panel.Footer>
         </Panel>
     );
-};
-
-const Item2 = ({text}) => {
-    return (
-        <Panel>
-            <Panel.Body> <h2>0</h2></Panel.Body>
-            <Panel.Footer>
-                <HelpBlock>View Details <FontAwesomeIcon icon='arrow-circle-right'/></HelpBlock>
-            </Panel.Footer>
-        </Panel>
-    )
 };
 
 const mapStateToProps = state => {
@@ -43,4 +32,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(Item);
 
-export {Item, Item2}
+export {
+    Item
+}

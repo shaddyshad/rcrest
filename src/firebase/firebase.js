@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
+
 //Production configuration
 var prodConfig = {
     apiKey: "AIzaSyCGJ6PhrPypFsTwUW8ClJk9buN51ud7NYM",
@@ -30,8 +31,7 @@ if(!firebase.apps.length){
 }
 
 const auth = firebase.auth();
-const database = firebase.database().ref();
-const ordersRef = database.child('orders');
+const database = firebase.database();
 
 export {
     auth,

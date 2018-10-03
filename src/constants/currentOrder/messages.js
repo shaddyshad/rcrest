@@ -1,6 +1,6 @@
 //Messaging action creators
 
-export const INIT_MESSAGE = "INIT_MESSAGE";         //initilize a message template
+export const INIT_MESSAGES = "INIT_MESSAGE";         //initilize a message template
 export const SET_MESSAGE_SUBJECT = "SET_MESSAGE_SUBJECT";           //Set the message subject
 export const SET_TEXT = "SET_MESSAGE_TEXT";         //sets the message text
 export const SEND_MESSAGE = "SEND_MESSAGE";

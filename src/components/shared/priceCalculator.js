@@ -7,10 +7,7 @@ import {
     HelpBlock,
     Panel
 } from "react-bootstrap";
-
-import {connect} from 'react-redux';
-
-import {setOrdersPath} from '../../actions/index';
+import {withRouter} from 'react-router-dom';
 
 class PriceCalculator extends Component {
 
@@ -43,8 +40,6 @@ class PriceCalculator extends Component {
 
 
     render() {
-        const {setOrders} = this.props;
-
         return (
             <div style={styles.form}>
                 <Panel style={styles.form}>
@@ -116,7 +111,7 @@ class PriceCalculator extends Component {
 
                             <HelpBlock><h3>Standard Cost: ${this.calculate()}</h3></HelpBlock>
 
-                            <Button type="submit" onClick={() => setOrders('/orders')}>Continue</Button>
+                            <Button type="submit" onClick={() => this.props.history.replace('/post-order')}>Continue</Button>
 
                         </Form>
                     </Panel.Body>
@@ -137,10 +132,6 @@ const styles = {
     }
 };
 
-const mapDispatchToProps = dispatch =>{
-    return{
-        setOrders: path => dispatch(setOrdersPath(path))
-    }
-};
 
-export default connect(null, mapDispatchToProps)(PriceCalculator);
+
+export default withRouter(PriceCalculator);

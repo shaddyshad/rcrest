@@ -9,6 +9,8 @@ import {
 } from 'react-bootstrap';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {signOut} from "../../actions/authUser";
+import {connect} from "react-redux";
 
 
 const Navigation = ({user, notifications, doSignOut}) => {
@@ -34,11 +36,8 @@ const Navigation = ({user, notifications, doSignOut}) => {
                     </NavItem>
                     <NavDropdown eventKey="4" title={user ? `Hi ${user.email}` : 'Profile'} id="nav-dropdown">
                         <MenuItem eventKey="4.1">Profile</MenuItem>
-                        <MenuItem eventKey="4.2">Settins</MenuItem>
+                        <MenuItem eventKey="4.2">Settings</MenuItem>
                         <MenuItem eventKey="4.3" onClick={doSignOut}>Logout</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey="4.4">Terms and conditions</MenuItem>
-                        <MenuItem eventKey="4.4">Money back policy</MenuItem>
                     </NavDropdown>
 
                 </Nav>
@@ -47,4 +46,10 @@ const Navigation = ({user, notifications, doSignOut}) => {
     )
 };
 
-export default Navigation;
+const mapDispatchToProps = dispatch => {
+    return {
+        doSignOut: () => dispatch(signOut())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Navigation);

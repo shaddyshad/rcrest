@@ -1,5 +1,6 @@
 import React from 'react';
+import Orders from '../../orders'
 
-const component = () => <div>Screen</div>;
+const component = () => <div><Orders/></div>;
 
 export default component;

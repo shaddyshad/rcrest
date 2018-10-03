@@ -5,45 +5,43 @@ import {
     FormControl,
     ControlLabel,
     Button,
-    HelpBlock, Radio
+    Radio
 } from 'react-bootstrap';
 
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {changeActiveForm, changeAdditionalFeaturesProperty, doSaveOrder} from '../../../actions';
+import {changeActiveForm} from '../../../actions/index';
 import {WRITER_ID, DIGITAL_COPIES, DISCOUNT_CODE} from '../../../constants/fieldNames'
+import {editAndSave} from "../../../actions/currentOrder/request";
+import {init_save_order_request} from "../../../actions/currentOrder";
 
 const mapStateToProps = state => {
     return {
-        order: state.currentOrder.additionalFeatures,
-        authUser: state.user.authUser
+        order: state.currentOrder,
+        authUser: state.authUser
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         changePage: idx => dispatch(changeActiveForm(idx)),
-        changeProps: (key, val) => dispatch(changeAdditionalFeaturesProperty(key, val)),
-        doSave: () => dispatch(doSaveOrder())
+        changeProps: (key, val) => dispatch(editAndSave(key, val)),
+        //Initiate the save order protocol
+        init_save_order_request: () => dispatch(init_save_order_request())
     }
 };
 
 class Form4 extends Component {
-    constructor(props){
-        super(props);
-    }
     handleSubmit() {
-        const {toSubmitOrder, changePage, authUser} = this.props;
+        const {changePage, authUser} = this.props;
         if(!authUser){
             //Anonymous save
-
             changePage(4)
         }
 
     }
 
     render() {
-        const {order, changeProps, doSave} = this.props;
+        const {order, changeProps, init_save_order_request} = this.props;
         return (
             <Form>
                 <FormGroup>
@@ -76,7 +74,7 @@ class Form4 extends Component {
                     />
                 </FormGroup>
 
-                {this.props.hideButton ? null : <Button onClick={() => doSave()}>Next</Button>}
+                {this.props.hideButton ? null : <Button onClick={() => init_save_order_request()}>Checkout</Button>}
 
             </Form>
         );

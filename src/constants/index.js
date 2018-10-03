@@ -1,9 +1,12 @@
+export const INIT_CURRENT_ORDER = "INIT_CURRENT_ORDER";
+
 export var CLEAR_ORDER = "CLEAR_ORDER";
 //Redux constants
 
 export const ADD_ORDER = "ADD_ORDER";
 export const ALL_ORDERS = "ALL_ORDERS";
 export const GET_PENDING = "GET_PENDING";
+export const FILTER_ORDERS = "FILTER_ORDERS";
 
 //Path signal
 export const CHANGE_PATH = "CHANGE_PATH";
@@ -31,10 +34,9 @@ export const SIGN_IN_EMAIL_PASSWORD = "SIGN_IN_EMAIL_PASSWORD";
 export const SIGN_UP_EMAIL_PASSWORD = "SIGN_IN_EMAIL_PASSWORD";
 
 //general
-export const LOADING_DATA = "LOADING_DATA";
 export const FINISH_LOADING_DATA = "FINISH_LOADING_DATA";
-export const RECEIVED_USER = "RECEIVED_USER";
-export const ERROR = "ERROR";
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
 
 //path management
 export const CHANGE_ACTIVE_PATH = "CHANGE_ACTIVE_PATH";

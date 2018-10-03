@@ -6,8 +6,7 @@ import {
 } from 'react-bootstrap';
 
 
-import LoginForm from '../../shared/LoginForm';
-import RegisterForm from '../../shared/RegisterForm';
+import signIn from '../../shared/signIn';
 import PaymentPanel from "./PaymentPanel";
 
 class Form1 extends Component {
@@ -30,18 +29,6 @@ class Form1 extends Component {
 
     render() {
         const {amount, isAuthenticated} = this.props;
-        const Register =
-            <div>
-                <HelpBlock>Enter the form to create an account</HelpBlock>
-                <RegisterForm/>
-            </div>;
-
-        const Login = (
-            <div>
-                <HelpBlock>Welcome Back, Sign in</HelpBlock>
-                <LoginForm/>
-            </div>
-        );
         return (
             <div>
                 <ListGroup>
@@ -52,23 +39,12 @@ class Form1 extends Component {
                     <ListGroupItem>
                         5. PAYMENT INFO
                         <HelpBlock>Amount: ${amount}</HelpBlock>
-                        {isAuthenticated ?  <PaymentPanel/> : <Panel>
-                            <Panel.Heading>
-                                <Row>
-                                    <Col xs={12} md={6}>
-                                        <Button onClick={this.handleNewCustomer}>New Customer</Button>
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                        <Button onClick={this.handleReturnCustomer}>Returning Customer</Button>
-                                    </Col>
-                                </Row>
-                            </Panel.Heading>
-                            <Panel.Body>
-                                {this.state.activeForm ? Register : Login}
-                            </Panel.Body>
-                        </Panel>}
-
-
+                        {isAuthenticated ? <PaymentPanel/> :
+                            <Panel>
+                                <Panel.Body>
+                                    <signIn/>
+                                </Panel.Body>
+                            </Panel>}
                     </ListGroupItem>
                 </ListGroup>
 

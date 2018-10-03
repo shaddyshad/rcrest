@@ -1,5 +1,5 @@
-export const SIGN_UP = '/register';             //public - Accessible to anyone
-export const SIGN_IN = '/login';                //public
+export const SIGN_UP = '/signup';             //public - Accessible to anyone
+export const SIGN_IN = '/signin';                //public
 export const LANDING = '/';                     //public || protected - Certain parts are visible based on authentication
 export const HOME = '/home';                    //protected - Only accessible to logged in users
 export const PASSWORD_FORGET = '/pw-forget';    //public

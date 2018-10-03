@@ -22,8 +22,15 @@
 *  ]
 * */
 
+import {INIT_NOTIFICATIONS} from "../../constants/currentOrder/notifications";
+
 const notificationsReducer = (state=[], action) => {
-    return state;
+    switch (action.type) {
+        case INIT_NOTIFICATIONS:
+            return state;
+        default:
+            return state;
+    }
 };
 
 export default notificationsReducer;
