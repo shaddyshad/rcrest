@@ -7,7 +7,7 @@ import {auth} from "../firebase";
 export const receivedUser = authUser => ({type: RECEIVED_USER, payload: authUser});
 
 export const authChanged = authUser => dispatch => {
-    const {uid, email, displayName} = authUser;
+    const {uid, email, displayName} = authUser ? authUser : null;
     dispatch(receivedUser({uid, email, displayName, role: 'student'}));
     dispatch(init_student({uid, email, displayName}));
 };
