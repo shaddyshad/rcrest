@@ -8,6 +8,7 @@ import {STATE_WAITING_PAYMENT} from "../../constants/currentOrder/information";
 import {doneLoadingData, loadingData} from "../async";
 import {database} from "../../firebase/firebase";
 import {new_error} from '../error';
+import {init_ui_post_state} from "../ui_state";
 
 export const init_current_order = () => (dispatch, getState) => {
     dispatch(init_information());
@@ -29,10 +30,9 @@ export const init_save_order_request = () => (dispatch, getState) => {
     let request = {...order.request};
 
     //Get ids and load data
-    dispatch(loadingData());
     const orderID = database.ref().child('orders').push().key;
     const requestID = database.ref().child('requests/'+orderID).push().key;
-    const {uid} = getState().authUser;
+    const uid = getState().authUser ? getState().authUser.uid : null;
 
     request.orderID = orderID;
     order.request = {requestID, discipline: request.discipline, pages: request.pages};
@@ -52,3 +52,8 @@ export const init_save_order_request = () => (dispatch, getState) => {
         });
 
 };
+
+//Initiate the checkout process
+export const init_order_checkout = () => dispatch => {
+    dispatch(loadingData());
+}

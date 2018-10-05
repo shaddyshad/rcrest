@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
+import Body from "../../user/Body";
 
-const component = () => <div>Screen</div>;
+const component = () => <Body screen="detail"/>;
 
 export default component;

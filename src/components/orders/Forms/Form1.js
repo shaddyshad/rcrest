@@ -174,7 +174,7 @@ class Form1 extends Component{
                     <Radio name="radioGroup"
                            value="MLA"
                            inline
-                            checked
+                            defaultChecked
                     >
                         MLA
                     </Radio>{' '}

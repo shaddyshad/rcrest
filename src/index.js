@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {ConnectedRouter} from 'connected-react-router';
+import {BrowserRouter} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {
@@ -37,25 +37,26 @@ import {
     faPlusCircle,
     faStopwatch,
     faSpinner,
-    faRandom
+    faRandom,
+    faCreditCard
 } from '@fortawesome/free-solid-svg-icons';
 
 import {Provider} from 'react-redux';
 
-import store, {history} from './store';
+import store from './store';
 
 library.add(
     faShieldAlt, faGem, faBriefcase, faUser, faEnvelopeOpenText, faDollarSign, faFile, fab,
     faGraduationCap, faEdit, faCertificate, faComment, faFutbol, faBullhorn, faQuestionCircle,
     faCheckCircle, faMapMarkerAlt, faHistory, faClock, faServer, faCartPlus, faCheckSquare, faListUl, faBell,
-    faMoneyBill, faArrowCircleRight, faTachometerAlt, faPlusCircle, faStopwatch, faSpinner, faRandom
+    faMoneyBill, faArrowCircleRight, faTachometerAlt, faPlusCircle, faStopwatch, faSpinner, faRandom, faCreditCard
 );
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <BrowserRouter>
             <App/>
-        </ConnectedRouter>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();

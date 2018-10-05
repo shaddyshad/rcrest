@@ -1,16 +1,17 @@
 //Forms reducers
 //To manage the orders forms
-import {CHANGE_ACTIVE_FORM} from "../../constants/index";
+import {CHANGE_ACTIVE_FORM, INIT_UI_POST_STATE} from "../../constants/index";
 
-const INITIAL_STATE = {
-    activeIdx: 0
-};
+const INITIAL_STATE = 0;
 
 const changePage = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         case CHANGE_ACTIVE_FORM:
-            const idx = action.payload;
-            return {...state, activeIdx: parseInt(idx, 10)};
+            return parseInt(action.payload, 10);
+
+        case INIT_UI_POST_STATE:
+            return 0;
+
         default:
             return state;
 

@@ -26,10 +26,9 @@ import {
     CLASS_APPROVED,
     CLASS_PENDING,
     INIT_INFORMATION,
-    STATE_NULL,
     STATE_OPENED,
     UPDATE_ORDER,
-    SET_ORDER_ID, TRANSIT_ORDER_STATE
+    SET_ORDER_ID, TRANSIT_ORDER_STATE, SET_ORDER_AMOUNT
 } from "../../constants/currentOrder/information";
 
 //Initial state
@@ -38,7 +37,8 @@ const INITIAL_INFORMATION_STATE = {
     state: STATE_OPENED,
     createdAt: Date.now(),
     lastUpdated: Date.now(),
-    orderID: null
+    orderID: null,
+    amount: 13
 };
 
 const informationReducer = (state, action) => {
@@ -62,6 +62,9 @@ const informationReducer = (state, action) => {
         case TRANSIT_ORDER_STATE:
             //Transition the order state
             return {...state, state: action.payload};
+
+        case SET_ORDER_AMOUNT:
+            return {...state, amount: action.payload}
 
         default:
             return {...INITIAL_INFORMATION_STATE};

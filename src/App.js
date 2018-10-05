@@ -26,4 +26,10 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = state => {
+    return {
+        isLoading: state.isLoading
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

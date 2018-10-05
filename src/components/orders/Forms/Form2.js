@@ -14,7 +14,7 @@ import {
 } from "../../../actions/index";
 
 import {INSTRUCTIONS} from '../../../constants/fieldNames';
-import {editProperty} from "../../../actions/currentOrder/request";
+import {editAndSave} from "../../../actions/currentOrder/request";
 
 
 const mapStateToProps = state => {
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         changePage: idx => dispatch(changeActiveForm(idx)),
-        changeProp: (key, value) => dispatch(editProperty(key, value))
+        changeProp: (key, value) => dispatch(editAndSave(key, value))
     }
 };
 

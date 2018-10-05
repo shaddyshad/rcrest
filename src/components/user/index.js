@@ -7,6 +7,7 @@ import {firebase} from "../../firebase";
 import {connect} from "react-redux";
 import {authChanged} from "../../actions/authUser";
 import {Redirect} from 'react-router-dom';
+import {fetchAndUpdateOrders} from "../../actions/orders";
 
 class Root extends Component {
 
@@ -56,7 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        authChanged: authUser => dispatch(authChanged(authUser))
+        authChanged: authUser => dispatch(authChanged(authUser)),
+        refresh_orders: () => dispatch(fetchAndUpdateOrders())
     }
 };
 

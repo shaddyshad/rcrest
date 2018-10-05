@@ -36,4 +36,5 @@ const database = firebase.database();
 export {
     auth,
     database,
+    firebase
 };

@@ -1,56 +1,71 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {
-    ListGroupItem,
-    ListGroup,
-    Panel,
-    } from 'react-bootstrap';
-
+    Label, ListGroup, ListGroupItem,
+} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {withRouter} from "react-router";
 
-const SideBar = () => {
-    const postOrder = `post-order`;
-    const currPath = `/orders/current`;
-    const pendPath = `/orders/pending`;
-    const progPath = `/orders/progress`;
-    const completePath = `/orders/completed`;
-    const revPath = `/orders/revision`;
-    const disPath = `/orders/disputes`;
-    const messagePath = `$messages`;
-    const notifPath = `/notifications`;
-    const archPath = `/orders/archives`;
-    const acceptPath = `/orders/accepted`;
+class SideBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: true
+        }
+    }
 
-
-    return(
-        <Panel>
-            <Panel.Body>
-        <ListGroup>
-            <ListGroupItem>
-                <Link to={'/accounts'}><FontAwesomeIcon icon='tachometer-alt'/>Home</Link>
-            </ListGroupItem>
-            <ListGroupItem><Link to={postOrder}><FontAwesomeIcon icon='plus-circle'/> Post Order</Link></ListGroupItem>
-            <ListGroupItem> <Link to={currPath}><FontAwesomeIcon icon='server'/>Current Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={pendPath}><FontAwesomeIcon icon='stopwatch'/>Pending Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={progPath}><FontAwesomeIcon icon='spinner'/>In Progress</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={completePath}><FontAwesomeIcon icon='check-circle'/>Completed Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={revPath}><FontAwesomeIcon icon='history'/>Completed Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={disPath}><FontAwesomeIcon icon='random'/>Disputed Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={acceptPath}><FontAwesomeIcon icon='check-circle'/>Accepted Orders</Link> </ListGroupItem>
-            <ListGroupItem> <Link to={archPath}><FontAwesomeIcon icon='check-circle'/>Archives</Link> </ListGroupItem>
-        </ListGroup>
-            </Panel.Body>
-            <Panel.Heading>
-                <ListGroup>
-                    <ListGroupItem> <Link to={messagePath}><FontAwesomeIcon icon='comment'/>Messages</Link> </ListGroupItem>
-                    <ListGroupItem> <Link to={notifPath}><FontAwesomeIcon icon='bell'/>Notifications</Link> </ListGroupItem>
-                    <ListGroupItem> <p>FAQs</p> </ListGroupItem>
-                </ListGroup>
-            </Panel.Heading>
-        </Panel>
-    );
-};
+    updateModal = visible => {
+        this.setState({visible});
+        this.forceUpdate();
+    };
 
 
-export default SideBar;
+    render() {
+        const postOrder = `post-order`;
+        const currPath = `/orders/current`;
+        const pendPath = `/orders/pending`;
+        const progPath = `/orders/progress`;
+        const completePath = `/orders/completed`;
+        const revPath = `/orders/revision`;
+        const disPath = `/orders/disputes`;
+        const archPath = `/orders/archives`;
+        const acceptPath = `/orders/accepted`;
+        return (
+            <ListGroup style={{backgroundColor: "#eee"}}>
+                <ListGroupItem>
+                    <Link to="/home"><FontAwesomeIcon icon='tachometer-alt'/>Home</Link>
+                </ListGroupItem>
+                <ListGroupItem>
+                    <Link to="/post-order">
+                        <FontAwesomeIcon icon='plus-circle'/> Post Order
+                        <Label style={{float: 'right', backgroundColor: "#5bc0de", color: "#FFF"}}>new</Label>
+                    </Link>
+                </ListGroupItem>
+
+                <ListGroupItem>
+                    <Link to={currPath}>
+                        <FontAwesomeIcon icon='server'/>Current Orders
+                        <Label style={{backgroundColor: "#d9534f", color: "#FFF", float: 'right'}}>0</Label>
+                    </Link>
+                </ListGroupItem>
+                <ListGroupItem>
+                    <Link to={completePath}>
+                        <FontAwesomeIcon icon='stopwatch'/>Completed Orders
+                        <Label style={{backgroundColor: "#5cb85c", color: "#FFF", float: 'right'}}>0</Label>
+                    </Link>
+                </ListGroupItem>
+                <ListGroupItem> <Link to={progPath}><FontAwesomeIcon icon='spinner'/>In Progress</Link> </ListGroupItem>
+                <ListGroupItem> <Link to={disPath}><FontAwesomeIcon icon='random'/>Disputed Orders</Link>
+                </ListGroupItem>
+                <ListGroupItem> <Link to={acceptPath}><FontAwesomeIcon icon='check-circle'/>Accepted Orders</Link>
+                </ListGroupItem>
+                <ListGroupItem> <Link to={archPath}><FontAwesomeIcon icon='check-circle'/>Archives</Link>
+                </ListGroupItem>
+            </ListGroup>
+        );
+    };
+}
+
+
+export default withRouter(SideBar);

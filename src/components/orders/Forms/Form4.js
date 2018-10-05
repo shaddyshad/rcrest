@@ -13,6 +13,8 @@ import {changeActiveForm} from '../../../actions/index';
 import {WRITER_ID, DIGITAL_COPIES, DISCOUNT_CODE} from '../../../constants/fieldNames'
 import {editAndSave} from "../../../actions/currentOrder/request";
 import {init_save_order_request} from "../../../actions/currentOrder";
+import {doneLoadingData, loadingData} from "../../../actions/async";
+import SignIn from "../../shared/signIn";
 
 const mapStateToProps = state => {
     return {
@@ -26,20 +28,13 @@ const mapDispatchToProps = dispatch => {
         changePage: idx => dispatch(changeActiveForm(idx)),
         changeProps: (key, val) => dispatch(editAndSave(key, val)),
         //Initiate the save order protocol
-        init_save_order_request: () => dispatch(init_save_order_request())
+        init_save_order_request: () => dispatch(init_save_order_request()),
+        loading_data: () => dispatch(loadingData()),
+        end_loading_data: () => dispatch(doneLoadingData())
     }
 };
 
 class Form4 extends Component {
-    handleSubmit() {
-        const {changePage, authUser} = this.props;
-        if(!authUser){
-            //Anonymous save
-            changePage(4)
-        }
-
-    }
-
     render() {
         const {order, changeProps, init_save_order_request} = this.props;
         return (
@@ -74,7 +69,7 @@ class Form4 extends Component {
                     />
                 </FormGroup>
 
-                {this.props.hideButton ? null : <Button onClick={() => init_save_order_request()}>Checkout</Button>}
+                {this.props.authUser ? <Button onClick={init_save_order_request}>Checkout</Button> : <SignIn/>}
 
             </Form>
         );

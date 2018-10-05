@@ -1,74 +1,32 @@
 import React, {Component} from 'react';
 import {Panel, Grid, Row, Col} from 'react-bootstrap';
-import {withRouter} from 'react-router-dom';
 import SideBar from './SideBar';
 import DashBoard from "./DashBoard";
-
+import Listing from "./listing";
+import Detail from "./detail";
+import Checkout from "./checkout";
 
 class Body extends Component {
+    getScreen(){
+        switch (this.props.screen) {
+            case '':
+            default:
+                return <DashBoard/>;
+            case 'listing':
+                //Authentication mechanisms
+                return <Listing/>;
+            case 'detail':
+                //Auth
+                return <Detail/>;
+            case 'checkout':
+                //Checkout
+                return <Checkout/>
+
+        }
+    }
+
+
     render() {
-        // const Pend = (
-        //     <div>
-        //         <h3>Pending</h3>
-        //         <Detail title="Pending" orders={this.props.pending}/>
-        //     </div>
-        // );
-        //
-        // const Prog = (
-        //     <div>
-        //         <h3>In Progress</h3>
-        //         <Detail title="Progress"/>
-        //     </div>
-        // );
-        //
-        // const Complete = (
-        //     <div>
-        //         <h3>Complete</h3>
-        //         <Detail title="Completed"/>
-        //     </div>
-        // );
-        //
-        // const Approved = (
-        //     <div>
-        //         <h3>Approved</h3>
-        //         <Detail title="Approved"/>
-        //     </div>
-        // );
-        //
-        // const Revision = (
-        //     <div>
-        //         <h3>Revisions</h3>
-        //         <Detail title="Revisions"/>
-        //     </div>
-        // );
-        //
-        // const Disputes = (
-        //     <div>
-        //         <h3>Disputes</h3>
-        //         <Detail title="Disputed"/>
-        //     </div>
-        // );
-        //
-        // const Current = (
-        //     <div>
-        //         <h3>Current orders</h3>
-        //         <Detail title="Current" orders={this.props.orders}/>
-        //     </div>
-        // );
-        //
-        // const Archive = (
-        //     <div>
-        //         <h3>Archives</h3>
-        //         <Detail title="Archived"/>
-        //     </div>
-        // );
-        //
-        // const Accepted = (
-        //     <div>
-        //         <h3>Accepted Orders</h3>
-        //         <Detail title="Accepted"/>
-        //     </div>
-        // );
         return (
             <div>
                 <Grid fluid>
@@ -79,10 +37,10 @@ class Body extends Component {
                         <Col xs={3} md={9}>
                             <Panel>
                                 <Panel.Body>
-                                    <h3>Clients Dashboard</h3>
+                                    <h3 style={{fontWeight: 'bold', color: "#000"}}>Clients Dashboard</h3>
                                     <hr/>
                                     <div>
-                                        <DashBoard/>
+                                        {this.getScreen()}
                                     </div>
                                 </Panel.Body>
                             </Panel>
@@ -94,4 +52,6 @@ class Body extends Component {
     }
 }
 
-export default withRouter(Body);
+
+
+export default Body;

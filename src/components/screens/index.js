@@ -8,6 +8,7 @@ import Notifications from './notifications';
 import Details from './order-details';
 import Listing from './order-listing';
 import PostOrder from './post-order';
+import Checkout from './checkout';
 
 import {Route, Switch} from "react-router-dom";
 import NotFound from "../shared/404NotFound";
@@ -17,12 +18,13 @@ const Screen = () => (
     <Switch>
         <Route exact path='/' component={Landing}/>
         <Route path='/signin' component={SignIn}/>
-        <Route path='/home' component={Home}/>
+        <Route exact path='/home' component={Home}/>
         <Route path='/messages' component={Messages}/>
         <Route path='/notifications' component={Notifications}/>
-        <Route path='/order' component={Details}/>
+        <Route path='/order/:id' component={Details}/>
         <Route path='/orders/:filter' component={Listing}/>
         <Route path='/post-order' component={PostOrder}/>
+        <Route path='/checkout/:id' component={Checkout}/>
         <Route component={NotFound}/>
     </Switch>
 );

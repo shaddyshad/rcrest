@@ -15,6 +15,7 @@
 * }
 * transaction = {
 *       form: String - Valid - ['PAYPAL'],
+*       serviceProvider: Paypal,
 *       amount: Float,
 *       state: String,
 *       from: userObject,

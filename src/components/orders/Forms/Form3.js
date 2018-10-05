@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import {changeActiveForm,} from '../../../actions/index';
 import {PAGES, SPACING, TYPE, DEADLINE, ACADEMIC_LEVEL} from "../../../constants/fieldNames";
 import {editProperty} from "../../../actions/currentOrder/request";
+import {Link} from "react-router-dom";
 
 
 const mapStateToProps = state => {
@@ -58,7 +59,7 @@ class Form3 extends Component {
 
     renderDeadline(){
         const deadlines = [...this.state.deadlines];
-        return deadlines.map(({amount, text, value}) => <option value={value} key={amount}>{text}</option> )
+        return deadlines.map(({amount, text, value}, idx) => <option value={value} key={idx}>{text}</option> )
     }
 
     renderTypes(){
@@ -87,7 +88,7 @@ class Form3 extends Component {
                 <FormGroup onChange={(event) => changeProp(ACADEMIC_LEVEL, event.target.value)}>
                     <ControlLabel>Academic Level</ControlLabel>
                     <Checkbox inline value="HIGH_SCHOOL">High School</Checkbox>
-                    <Checkbox inline value="UNDERGRADUATE" checked>Undergraduate</Checkbox>{' '}
+                    <Checkbox inline value="UNDERGRADUATE" defaultChecked>Undergraduate</Checkbox>{' '}
                     <Checkbox inline value="MASTERS">Master</Checkbox>
                     <Checkbox inline value="DOCTORAL">Doctoral</Checkbox>
                 </FormGroup>
@@ -96,14 +97,14 @@ class Form3 extends Component {
                     <ControlLabel>Pages</ControlLabel>
                     <FormControl
                         type="text"
-                        value={order.pages}
+                        value={order.request.pages}
                         onChange={(event) => changeProp(PAGES, event.target.value)}
                     />
                 </FormGroup>
 
                 <FormGroup onChange={(event) => changeProp(SPACING, event.target.value)}>
                     <ControlLabel>Spacing</ControlLabel>
-                    <Radio name="radioGroup" value="SINGLE" inline>
+                    <Radio name="radioGroup" value="SINGLE" inline defaultChecked>
                         Single
                     </Radio>{' '}
                     <Radio name="radioGroup" value="DOUBLE" inline>
@@ -132,7 +133,7 @@ class Form3 extends Component {
                 </FormGroup>
 
 
-                {this.props.hideButton ? null : <Button onClick={() => changePage(3)}>Next</Button>}
+                {this.props.authUser ? <Link to={'/checkout'}><Button>Checkout</Button></Link> : <Link to={'/signin'}><Button>Sign in to checkout</Button></Link>}
 
             </Form>
         );

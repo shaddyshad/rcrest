@@ -48,7 +48,7 @@ class Orders extends Component {
 
 
     render() {
-        const {loaderShown} = this.state;
+        const {isLoading} = this.props;
 
         const form1 = (<div><h3>Paper Details</h3><Form1 onSubmit={(event) => this.handleSubmit(event, 1)}/></div>);
         const form2 = <Form2 onSubmit={this.handleForm1Submit}/>;
@@ -68,14 +68,14 @@ class Orders extends Component {
         return (
             <div className="orders">
                 <Navbar/>
-                {loaderShown ? <Spinner/> : <Grid>
+                <Grid>
                     <Row>
                         <Col xs={12} md={7}>
-                            {activeForm}
+                            {isLoading ? <Spinner/> :activeForm}
                         </Col>
                         <Col xsHidden md={5}><Sidebar sidebar={this.state.sidebar} header="Our Exclusive offers"/></Col>
                     </Row>
-                </Grid>}
+                </Grid>
 
             </div>
         );
@@ -85,7 +85,8 @@ class Orders extends Component {
 const mapStateToProps = state => {
     return {
         currentOrder: state.currentOrder,
-        activeIdx: state.ordersForm.activeIdx
+        activeIdx: state.ordersForm,
+        isLoading: state.isLoading
     }
 };
 

@@ -15,7 +15,7 @@ import {connect} from "react-redux";
 
 const Navigation = ({user, notifications, doSignOut}) => {
     return (
-        <Navbar staticTop>
+        <Navbar staticTop style={styles.nav}>
             <Navbar.Header>
                 <Navbar.Brand>
                     <span>Research Crest</span>
@@ -51,5 +51,11 @@ const mapDispatchToProps = dispatch => {
         doSignOut: () => dispatch(signOut())
     }
 };
+
+const styles = {
+    nav: {
+        backgroundColor: "#dff4ff"
+    }
+}
 
 export default connect(null, mapDispatchToProps)(Navigation);

@@ -113,7 +113,6 @@ const styles = {
 
 const mapStateToProps = state => {
     return {
-        pathname: state.router.location.pathname,
         isLoading: state.isLoading
     }
 };

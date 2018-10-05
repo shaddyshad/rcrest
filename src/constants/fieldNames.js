@@ -10,5 +10,5 @@ export const TYPE = "type";
 export const DEADLINE = "deadline";
 export const ACADEMIC_LEVEL = "academicLevel";
 export const WRITER_ID = "writerId";
-export const DIGITAL_COPIES = "isDigitalCopies";
+export const DIGITAL_COPIES = "digitalCopies";
 export const DISCOUNT_CODE = "discountCode";

@@ -7,6 +7,7 @@ export const ADD_ORDER = "ADD_ORDER";
 export const ALL_ORDERS = "ALL_ORDERS";
 export const GET_PENDING = "GET_PENDING";
 export const FILTER_ORDERS = "FILTER_ORDERS";
+export const INIT_ORDER_LIST = "INIT_ORDER_LIST";
 
 //Path signal
 export const CHANGE_PATH = "CHANGE_PATH";
@@ -40,3 +41,7 @@ export const CLEAR_ERROR = "CLEAR_ERROR";
 
 //path management
 export const CHANGE_ACTIVE_PATH = "CHANGE_ACTIVE_PATH";
+
+
+//UI management
+export const INIT_UI_POST_STATE = "INIT_UI_POST_STATE";
